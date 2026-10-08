@@ -1,0 +1,1140 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Coach 1re B</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&family=Caveat:wght@600;700&display=swap">
+<style>
+
+/* Mise en page : une « copie d'examen » numérique — barre d'onglets, colonne de lecture, questions sur papier réglé ; surligneur pour les verbes d'action, stylo rouge pour le corrigé. */
+:root{
+  --paper:#f2f4f8; --card:#ffffff; --ink:#18264a; --ink-2:#4b5878; --ink-3:#7d88a3;
+  --rule:#d5dceb; --rule-strong:#b7c2d9; --blue:#2846c4; --blue-soft:#e4e9fb;
+  --red:#c7372c; --red-soft:#fbe9e7; --hl:#f6df4c; --hl-ink:#1f1a05;
+  --ok:#1f7a4d; --ok-soft:#e1f3e9; --warn:#a85f00; --warn-soft:#fdf0dc;
+  --shadow:0 1px 2px rgba(24,38,74,.06),0 4px 14px rgba(24,38,74,.06);
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --f-hand:"Caveat","Bradley Hand","Segoe Print",cursive;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0f1422; --card:#171e30; --ink:#e7ebf6; --ink-2:#aab4cc; --ink-3:#7a85a0;
+  --rule:#273149; --rule-strong:#36425f; --blue:#8ea4ff; --blue-soft:#202c52;
+  --red:#ff7a6e; --red-soft:#3a1d1c; --hl:#e8cf3a; --hl-ink:#1f1a05;
+  --ok:#5fd39a; --ok-soft:#17342a; --warn:#f0b35a; --warn-soft:#3a2a12;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0f1422; --card:#171e30; --ink:#e7ebf6; --ink-2:#aab4cc; --ink-3:#7a85a0;
+  --rule:#273149; --rule-strong:#36425f; --blue:#8ea4ff; --blue-soft:#202c52;
+  --red:#ff7a6e; --red-soft:#3a1d1c; --hl:#e8cf3a; --hl-ink:#1f1a05;
+  --ok:#5fd39a; --ok-soft:#17342a; --warn:#f0b35a; --warn-soft:#3a2a12;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25); color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:16px}
+
+/* En-tête */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;align-items:center;gap:16px;padding-block:10px;flex-wrap:wrap}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:auto}
+.brand b{font-family:var(--f-display);font-weight:800;font-size:1.35rem;letter-spacing:-.01em}
+.brand b span{background:var(--hl);color:var(--hl-ink);padding:0 .18em;border-radius:3px}
+.brand small{color:var(--ink-3);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+nav.tabs{display:flex;gap:4px;overflow-x:auto;max-width:100%;scrollbar-width:none}
+nav.tabs a{white-space:nowrap;text-decoration:none;color:var(--ink-2);font-weight:700;font-size:.92rem;padding:7px 12px;border-radius:999px}
+nav.tabs a:hover{background:var(--blue-soft);color:var(--ink)}
+nav.tabs a[aria-current="page"]{background:var(--ink);color:var(--paper)}
+
+main{padding-block:28px 64px}
+section[data-view]{display:grid;gap:28px}
+section[data-view] > *{min-width:0}
+.lede{color:var(--ink-2);max-width:68ch}
+.eyebrow{font-size:.75rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
+.h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.02em}
+.h2{font-size:1.4rem;font-weight:700}
+.hl{background:linear-gradient(transparent 12%,var(--hl) 12%,var(--hl) 88%,transparent 88%);color:var(--hl-ink);padding:0 .2em;border-radius:2px;font-weight:700;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hand{font-family:var(--f-hand);color:var(--red);font-weight:700}
+.muted{color:var(--ink-3)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+
+/* Boutons */
+.btn{border:1px solid var(--rule-strong);background:var(--card);color:var(--ink);text-decoration:none;border-radius:10px;padding:8px 14px;font-weight:700;font-size:.92rem;display:inline-flex;align-items:center;gap:8px}
+.btn:hover{border-color:var(--ink-2)}
+.btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn.red{color:var(--red);border-color:color-mix(in srgb,var(--red) 45%,transparent)}
+.btn.ghost{background:transparent}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.btn.sm{padding:5px 10px;font-size:.84rem;border-radius:8px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+/* Accueil */
+.hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:center}
+.exam-card{background:var(--card);border:1px solid var(--rule);border-radius:16px;box-shadow:var(--shadow);padding:20px;display:grid;gap:14px}
+.timeline{display:grid;grid-template-columns:15fr 150fr 15fr;border-radius:8px;overflow:hidden;border:1px solid var(--rule-strong);font-size:.8rem;font-weight:700}
+.timeline div{padding:8px 6px;text-align:center}
+.timeline div:nth-child(1),.timeline div:nth-child(3){background:var(--hl);color:var(--hl-ink)}
+.timeline div:nth-child(2){background:var(--blue-soft)}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.fact{border-top:2px solid var(--ink);padding-top:6px}
+.fact b{font-family:var(--f-display);font-size:1.5rem;display:block}
+.fact span{font-size:.82rem;color:var(--ink-2)}
+.modules{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.module{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:16px;text-decoration:none;color:inherit;display:grid;gap:6px;align-content:start}
+.module:hover{border-color:var(--ink-2)}
+.module h3{font-size:1.1rem}
+.module p{color:var(--ink-2);font-size:.92rem}
+.verbs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
+.verb{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:12px 14px;display:grid;gap:4px}
+.verb p{font-size:.92rem;color:var(--ink-2)}
+.crit{columns:2 260px;column-gap:28px;padding-left:1.1em;margin:0}
+.crit li{margin-bottom:6px;break-inside:avoid}
+
+/* Sujets */
+.grid-sujets{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.sujet{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:16px;display:grid;gap:8px;text-align:left;align-content:start}
+.sujet:hover{border-color:var(--ink-2);box-shadow:var(--shadow)}
+.sujet h3{font-size:1.2rem}
+.sujet p{font-size:.9rem;color:var(--ink-2)}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:.72rem;font-weight:700;letter-spacing:.03em;padding:2px 8px;border-radius:999px;background:var(--blue-soft);color:var(--ink)}
+.tag.a{background:var(--warn-soft);color:var(--warn)}
+.tag.lock{background:var(--red-soft);color:var(--red)}
+.tag.open{background:var(--ok-soft);color:var(--ok)}
+.lockbox{border:1.5px dashed color-mix(in srgb,var(--red) 55%,transparent);border-radius:12px;padding:10px 14px;font-size:.92rem;color:var(--ink-2)}
+.bar{height:6px;border-radius:99px;background:var(--rule);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ok);width:0}
+
+/* Vue d'un sujet */
+.case-head{display:grid;gap:12px}
+.case-layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:28px;align-items:start}
+.outline{position:sticky;top:calc(env(safe-area-inset-top,0px) + 70px);display:grid;gap:4px;font-size:.88rem;max-height:calc(100vh - 100px);overflow:auto}
+.outline a{text-decoration:none;color:var(--ink-2);padding:4px 8px;border-radius:6px;display:flex;gap:8px;align-items:center}
+.outline a:hover{background:var(--blue-soft);color:var(--ink)}
+.outline .dot{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--ink-3);flex:none}
+.outline .dot.done{background:var(--ok);border-color:var(--ok)}
+.outline .mt{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:700;margin-top:10px;padding-left:8px}
+.ctx{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:16px;display:grid;gap:10px}
+.ctx dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 14px;margin:0;font-size:.92rem}
+.ctx dt{color:var(--ink-3)}
+.ctx dd{margin:0}
+details.data{border-top:1px dashed var(--rule-strong);padding-top:8px}
+details.data summary{cursor:pointer;font-weight:700;color:var(--blue)}
+details.data ul{margin:8px 0 0;padding-left:1.1em;display:grid;gap:4px;font-size:.92rem}
+.mode-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:10px 14px}
+.seg{display:inline-flex;border:1px solid var(--rule-strong);border-radius:10px;overflow:hidden}
+.seg button{border:0;background:transparent;padding:7px 12px;font-weight:700;font-size:.88rem;color:var(--ink-2)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.clock{font-family:var(--f-mono);font-size:1.25rem;font-weight:600;font-variant-numeric:tabular-nums}
+.clock.low{color:var(--red)}
+.mission-title{font-size:1.15rem;font-weight:700;padding-top:6px;border-top:2px solid var(--ink)}
+.q{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:16px;display:grid;gap:12px;scroll-margin-top:90px}
+.q-head{display:flex;gap:12px;align-items:flex-start}
+.q-num{font-family:var(--f-display);font-weight:800;font-size:1.15rem;min-width:2.6em}
+.q-txt{flex:1;min-width:0}
+.q-meta{display:flex;gap:12px;flex-wrap:wrap;font-size:.8rem;color:var(--ink-3)}
+.q-meta span{display:inline-flex;gap:4px;align-items:center}
+textarea.copy{width:100%;min-height:150px;resize:vertical;border:1px solid var(--rule-strong);border-radius:10px;padding:6px 12px;line-height:28px;
+  background:var(--card) repeating-linear-gradient(to bottom,transparent 0,transparent 27px,var(--rule) 27px,var(--rule) 28px);background-attachment:local;background-position:0 6px;color:var(--ink)}
+.tip{background:var(--blue-soft);border-radius:10px;padding:10px 12px;font-size:.92rem}
+.fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.field{display:grid;gap:4px;font-size:.88rem}
+.field label{color:var(--ink-2)}
+.field input{font-size:16px;border:1px solid var(--rule-strong);border-radius:8px;padding:7px 10px;background:var(--card);font-family:var(--f-mono);font-variant-numeric:tabular-nums;width:100%}
+.field input.ok{border-color:var(--ok);background:var(--ok-soft)}
+.field input.ko{border-color:var(--red);background:var(--red-soft)}
+.field .exp{font-size:.8rem;font-family:var(--f-mono);color:var(--red)}
+.picks{display:grid;gap:6px}
+.pick{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--rule);border-radius:10px;padding:8px 10px;font-size:.93rem}
+.pick input{margin-top:4px;accent-color:var(--ink)}
+.pick.good{border-color:var(--ok);background:var(--ok-soft)}
+.pick.bad{border-color:var(--red);background:var(--red-soft)}
+.pick.opt{border-style:dashed}
+.pick small{display:block;color:var(--ink-2);font-size:.82rem}
+.corr{border:1.5px solid color-mix(in srgb,var(--red) 55%,transparent);border-radius:12px;padding:12px 14px;display:grid;gap:8px;background:color-mix(in srgb,var(--red-soft) 55%,var(--card))}
+.corr h4{font-family:var(--f-hand);color:var(--red);font-size:1.6rem;font-weight:700;line-height:1}
+.corr ul{margin:0;padding-left:0;list-style:none;display:grid;gap:6px}
+.corr li label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.corr li input{margin-top:5px;accent-color:var(--red)}
+.corr .note{font-size:.82rem;color:var(--ink-2)}
+.score-chip{font-weight:700;font-size:.82rem;padding:2px 9px;border-radius:999px;background:var(--rule);color:var(--ink)}
+.score-chip.ok{background:var(--ok-soft);color:var(--ok)}
+.score-chip.mid{background:var(--warn-soft);color:var(--warn)}
+.score-chip.ko{background:var(--red-soft);color:var(--red)}
+.bilan{background:var(--card);border:2px solid var(--ink);border-radius:16px;padding:18px;display:grid;gap:10px}
+
+/* Calculs */
+.calc-layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}
+.panel{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:16px;display:grid;gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--rule-strong);background:var(--card);border-radius:999px;padding:4px 11px;font-size:.84rem;font-weight:700;color:var(--ink-2)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.exo{display:grid;gap:12px}
+.exo .ctxline{font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
+.exo .enonce{font-size:1.08rem}
+.answer-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.answer-row input{font-family:var(--f-mono);font-size:1.1rem;border:1.5px solid var(--rule-strong);border-radius:10px;padding:8px 12px;width:200px;max-width:100%;background:var(--card)}
+.steps{font-family:var(--f-mono);font-size:.9rem;display:grid;gap:4px;background:var(--paper);border-radius:10px;padding:10px 12px;overflow-x:auto}
+.feedback{font-weight:700}
+.feedback.ok{color:var(--ok)} .feedback.ko{color:var(--red)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.stats b{font-family:var(--f-display);font-size:1.6rem;display:block}
+.stats span{font-size:.75rem;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+table.formules{width:100%;border-collapse:collapse;font-size:.86rem}
+table.formules td{border-top:1px solid var(--rule);padding:6px 4px;vertical-align:top}
+table.formules td:first-child{font-weight:700;width:42%}
+table.formules td:last-child{font-family:var(--f-mono);font-size:.8rem}
+
+/* Ateliers */
+.ateliers-nav{display:flex;flex-wrap:wrap;gap:6px}
+.order-list{display:grid;gap:6px;list-style:none;padding:0;margin:0;counter-reset:st}
+.order-list li{display:flex;align-items:center;gap:8px;border:1px solid var(--rule-strong);background:var(--card);border-radius:10px;padding:8px 10px}
+.order-list li::before{counter-increment:st;content:counter(st);font-family:var(--f-display);font-weight:800;min-width:1.4em}
+.order-list li span{flex:1;min-width:0}
+.order-list li.good{border-color:var(--ok);background:var(--ok-soft)}
+.order-list li.bad{border-color:var(--red);background:var(--red-soft)}
+.order-list li small{display:block;color:var(--ink-2);font-style:italic}
+.mv{border:1px solid var(--rule-strong);background:var(--paper);border-radius:6px;width:30px;height:30px;font-weight:700;line-height:1}
+.quiz-card{display:grid;gap:12px}
+.quote{font-size:1.1rem;border-left:3px solid var(--ink);padding:4px 0 4px 14px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts button{border:1px solid var(--rule-strong);background:var(--card);border-radius:10px;padding:8px 12px;font-weight:700;text-align:left}
+.opts button.good{border-color:var(--ok);background:var(--ok-soft);color:var(--ok)}
+.opts button.bad{border-color:var(--red);background:var(--red-soft);color:var(--red)}
+.explain{background:var(--paper);border-radius:10px;padding:10px 12px;font-size:.95rem}
+.swot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;font-size:.78rem;text-align:center;font-weight:700}
+.swot-grid div{padding:6px;border-radius:6px;background:var(--paper)}
+.sms-phone{max-width:360px;border:1px solid var(--rule-strong);border-radius:22px;padding:14px;background:var(--paper);display:grid;gap:8px}
+.bubble{background:var(--card);border:1px solid var(--rule);border-radius:16px 16px 16px 4px;padding:10px 12px;white-space:pre-wrap;overflow-wrap:anywhere;min-height:44px}
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:4px;font-size:.92rem}
+.checks li::before{content:"○ ";color:var(--ink-3)}
+.checks li.on::before{content:"● ";color:var(--ok)}
+.checks li.on{color:var(--ok)}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.fc-field{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--rule);border-radius:10px;padding:8px 10px;font-size:.92rem;background:var(--card)}
+.fc-field.good{border-color:var(--ok);background:var(--ok-soft)}
+.fc-field.bad{border-color:var(--red);background:var(--red-soft)}
+.fc-field.miss{border-color:var(--warn);background:var(--warn-soft)}
+
+/* Notions */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.flash{perspective:900px;min-height:170px;border:0;background:transparent;padding:0;text-align:left}
+.flash .in{position:relative;width:100%;height:100%;min-height:170px;transition:transform .45s;transform-style:preserve-3d}
+.flash.flip .in{transform:rotateY(180deg)}
+.flash .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;border:1px solid var(--rule);padding:14px;display:grid;align-content:space-between;gap:8px;background:var(--card);overflow:auto}
+.flash .back{transform:rotateY(180deg);background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:.94rem}
+.flash .face h3{font-size:1.15rem}
+.flash .known{font-size:.75rem;font-weight:700;color:var(--ok)}
+@media (prefers-reduced-motion: reduce){.flash .in{transition:none}}
+
+.toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:10px;font-weight:700;font-size:.92rem;z-index:50;box-shadow:var(--shadow)}
+
+@media (max-width:860px){
+  .hero,.case-layout,.calc-layout{grid-template-columns:minmax(0,1fr)}
+  .outline{position:static;max-height:none;display:flex;flex-wrap:wrap;gap:4px}
+  .outline .mt{width:100%}
+}
+@media (max-width:520px){
+  .facts{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .q-head{flex-direction:column;gap:4px}
+  .brand small{display:none}
+}
+
+/* Téléphone : en-tête compact, onglets visibles en entier, pas de zoom iOS sur les champs */
+@media (max-width:640px){
+  .top .wrap{gap:4px 10px;padding-block:6px}
+  .brand b{font-size:1.15rem}
+  nav.tabs{width:100%;justify-content:space-between;gap:2px}
+  nav.tabs a{padding:6px 9px;font-size:.84rem}
+  textarea.copy,.answer-row input,#sms-in{font-size:16px}
+  #calc-types,#at-nav,#fc-filter{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;min-width:0;max-width:100%}
+  #calc-types .chip,#at-nav .chip,#fc-filter .chip{flex:none}
+}
+/* Paysage sur téléphone : l'en-tête ne reste plus collé en haut, et tient sur une ligne */
+@media (max-height:500px){
+  .top{position:static}
+  .top .wrap{flex-wrap:nowrap;padding-block:6px}
+  .brand small{display:none}
+  nav.tabs{width:auto}
+}
+
+/* ——— Coach 1re B : même copie d'examen que Coach E2, encre vert canard pour distinguer la Première ——— */
+:root{--blue:#0e7466;--blue-soft:#ddf2ee}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--blue:#5fd3bf;--blue-soft:#163a35}}
+:root[data-theme="dark"]{--blue:#5fd3bf;--blue-soft:#163a35}
+.brand b span{background:var(--blue);color:var(--paper)}
+.lede b{color:var(--ink)}
+.memo{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.memo div{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:12px 14px;display:grid;gap:4px;font-size:.92rem}
+.memo b{font-family:var(--f-display);font-size:1.05rem}
+.badges{display:flex;flex-wrap:wrap;gap:8px}
+.badge{border:1px dashed var(--rule-strong);border-radius:999px;padding:5px 12px;font-size:.85rem;color:var(--ink-3)}
+.badge.on{border-style:solid;border-color:var(--ok);background:var(--ok-soft);color:var(--ok);font-weight:700}
+.mod-best{font-size:.82rem;color:var(--ink-3);font-family:var(--f-mono)}
+.pickers{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.picker{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:16px;text-align:left;display:grid;gap:6px;align-content:start}
+.picker:hover{border-color:var(--ink-2)}
+.picker h3{font-size:1.1rem}
+.picker p{font-size:.9rem;color:var(--ink-2)}
+.split{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;align-items:start}
+
+/* Téléphone d'appel PFMP */
+.phone{background:#121826;color:#eef2fb;border-radius:28px;padding:14px;display:grid;gap:10px;max-width:560px;width:100%;box-shadow:var(--shadow);border:6px solid #2a3245}
+.phone .top-call{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:.88rem}
+.phone .who b{display:block;font-family:var(--f-display);font-size:1.05rem}
+.phone .who span{color:#9aa6c2}
+.gauge{display:grid;gap:4px;font-size:.75rem;color:#9aa6c2;min-width:120px}
+.gauge .g{height:9px;border-radius:99px;background:#2a3245;overflow:hidden}
+.gauge .g i{display:block;height:100%;width:100%;background:#4ade80;transition:width .4s,background .4s}
+.chat{display:grid;gap:8px;max-height:360px;overflow-y:auto;padding:4px;scroll-behavior:smooth}
+.msg{max-width:85%;padding:9px 12px;border-radius:16px;font-size:.95rem;line-height:1.4;font-family:var(--f-body)}
+.msg.them{background:#2a3245;border-bottom-left-radius:4px;justify-self:start}
+.msg.me{background:#0e7466;border-bottom-right-radius:4px;justify-self:end}
+.msg.sys{justify-self:center;background:transparent;color:#9aa6c2;font-size:.8rem;font-style:italic}
+.msg .fb{display:block;margin-top:4px;font-size:.78rem;font-weight:700}
+.msg .fb.good{color:#7ef0b0} .msg .fb.meh{color:#ffd166} .msg .fb.bad{color:#ff8a80}
+.choices{display:grid;gap:8px}
+.choices button{background:#1c2436;border:1px solid #39435c;color:#eef2fb;border-radius:12px;padding:10px 12px;text-align:left;font-size:.93rem;font-family:var(--f-body)}
+.choices button:hover{border-color:#5fd3bf}
+.countdown{height:5px;border-radius:99px;background:#2a3245;overflow:hidden}
+.countdown i{display:block;height:100%;background:#5fd3bf;width:100%}
+.croc{display:grid;gap:8px}
+.croc div{border:1px solid var(--rule);border-radius:10px;padding:8px 10px;font-size:.88rem;background:var(--card)}
+.croc div b{font-family:var(--f-display)}
+.croc div.now{border-color:var(--blue);background:var(--blue-soft)}
+.debrief{display:grid;gap:10px}
+.step-rev{border-top:1px solid var(--rule);padding-top:8px;font-size:.93rem;display:grid;gap:3px}
+.step-rev .model{color:var(--ok)}
+.qtag{font-size:.72rem;font-weight:700;padding:1px 8px;border-radius:999px}
+.qtag.good{background:var(--ok-soft);color:var(--ok)} .qtag.meh{background:var(--warn-soft);color:var(--warn)} .qtag.bad{background:var(--red-soft);color:var(--red)}
+
+/* Swipe ciblage */
+.brief{background:var(--blue-soft);border-radius:12px;padding:12px 14px;display:grid;gap:4px;font-size:.93rem}
+.deck{position:relative;min-height:360px;display:grid;place-items:center;touch-action:pan-y}
+.pcard{touch-action:none;width:min(100%,420px);background:var(--card);border:1px solid var(--rule-strong);border-radius:18px;padding:16px;box-shadow:var(--shadow);display:grid;gap:8px;user-select:none;cursor:grab;transition:transform .25s ease}
+.pcard.drag{transition:none;cursor:grabbing}
+.pcard h3{font-size:1.2rem}
+.pcard dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 12px;margin:0;font-size:.93rem}
+.pcard dt{color:var(--ink-3)}
+.pcard dd{margin:0}
+.pcard .stamp{position:absolute;top:18px;font-family:var(--f-display);font-weight:800;font-size:1.3rem;padding:2px 10px;border:3px solid;border-radius:8px;opacity:0;transform:rotate(-10deg)}
+.swipe-btns{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.swipe-btns .btn{min-width:110px;justify-content:center}
+.verdict{border-radius:12px;padding:10px 12px;font-size:.93rem;display:grid;gap:4px}
+.verdict.ok{background:var(--ok-soft)} .verdict.ko{background:var(--red-soft)}
+
+/* Argumentaire glisser-déposer */
+.dnd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
+.verbs-col,.args-col{display:grid;gap:8px}
+.slot{border:1.5px dashed var(--rule-strong);border-radius:12px;padding:10px 12px;background:var(--card);display:grid;gap:6px}
+.slot .v{font-style:italic}
+.slot .drop{min-height:44px;border-radius:8px;background:var(--paper);padding:6px 8px;font-size:.88rem;color:var(--ink-3);display:grid;align-items:center}
+.slot.over{border-color:var(--blue);background:var(--blue-soft)}
+.slot.good{border-style:solid;border-color:var(--ok)} .slot.good .drop{background:var(--ok-soft);color:var(--ink)}
+.slot.bad{border-style:solid;border-color:var(--red)}
+.bulle{background:var(--red-soft);color:var(--red);border-radius:8px;padding:6px 8px;font-size:.84rem;font-weight:700}
+.arg{border:1px solid var(--rule-strong);background:var(--card);border-radius:12px;padding:10px 12px;font-size:.9rem;text-align:left;cursor:grab}
+.arg.sel{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
+.arg.used{opacity:.35;pointer-events:none}
+
+/* Flash-calcul */
+.survie-hud{display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-family:var(--f-mono);font-size:.95rem}
+.survie-hud .lives{color:var(--red);letter-spacing:.1em}
+.tbar{height:8px;border-radius:99px;background:var(--rule);overflow:hidden}
+.tbar i{display:block;height:100%;background:var(--blue);width:100%}
+.bigq{font-size:1.25rem;font-weight:700;font-family:var(--f-display)}
+
+/* SMS / e-mail */
+.mail{border:1px solid var(--rule-strong);border-radius:14px;background:var(--card);overflow:hidden;max-width:520px}
+.mail .mh{background:var(--paper);padding:8px 12px;font-size:.84rem;border-bottom:1px solid var(--rule);display:grid;gap:2px}
+.mail .mb{padding:12px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:.92rem;min-height:120px}
+.form-grid{display:grid;gap:8px}
+.form-grid label{font-size:.85rem;color:var(--ink-2)}
+.form-grid input{border:1px solid var(--rule-strong);border-radius:8px;padding:8px 10px;background:var(--card);font-size:16px}
+.checks li.ko{color:var(--red)} .checks li.ko::before{content:"✕ ";color:var(--red)}
+
+
+/* Réglages, confort de lecture, bilan */
+.top .wrap{position:relative}
+.cfg{position:fixed;inset:0;z-index:40;background:rgba(10,14,25,.45);display:grid;place-items:start center;padding:calc(70px + env(safe-area-inset-top,0px)) 16px 16px;overflow-y:auto}
+.cfg-in{background:var(--card);color:var(--ink);border:1px solid var(--rule-strong);border-radius:16px;box-shadow:var(--shadow);padding:18px;display:grid;gap:14px;width:min(560px,100%)}
+.cfg-row{display:grid;gap:6px;border-top:1px solid var(--rule);padding-top:12px}
+.cfg-row .muted{font-size:.88rem}
+.sw{display:flex;gap:10px;align-items:center;cursor:pointer}
+.sw input{width:20px;height:20px;accent-color:var(--blue)}
+body.dys{--f-body:"Lexend","Atkinson Hyperlegible",system-ui,sans-serif;font-size:18px;line-height:1.75;letter-spacing:.02em;word-spacing:.1em}
+body.dys .msg,body.dys .choices button,body.dys .pcard,body.dys .arg,body.dys .slot{font-size:1.02rem;line-height:1.65}
+body.dys .h1{letter-spacing:0}
+.choice-row{display:flex;gap:6px;align-items:stretch}
+.choice-row > button:first-child{flex:1;min-width:0}
+.say{flex:none;width:44px;border-radius:12px;border:1px solid #39435c;background:#1c2436;color:#eef2fb;font-size:1.05rem}
+.say.light{border-color:var(--rule-strong);background:var(--card);color:var(--ink);height:40px}
+.msg .replay{background:transparent;border:0;color:#9aa6c2;font-size:.85rem;padding:0 0 0 6px;cursor:pointer}
+.zen-tag{font-size:.75rem;font-weight:700;color:var(--blue);background:var(--blue-soft);border-radius:999px;padding:2px 8px}
+.bilan-box textarea{width:100%;min-height:260px;font-family:var(--f-mono);font-size:.85rem;border:1px solid var(--rule-strong);border-radius:10px;padding:10px;background:var(--paper);color:var(--ink)}
+.bilan-box img{max-width:min(100%,420px);border-radius:12px;border:1px solid var(--rule)}
+.bilan-box .form-grid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+@media (max-width:640px){ #cfg-btn{order:1;padding:4px 9px;font-size:.8rem} nav.tabs{order:2} }
+@media (max-width:860px){
+  .split,.dnd{grid-template-columns:minmax(0,1fr)}
+  .split > .brief{order:-1}
+  .deck{min-height:280px;place-items:start center}
+  .args-col{position:sticky;bottom:0;z-index:5;max-height:40vh;overflow-y:auto;background:var(--paper);border-top:2px solid var(--blue);padding:8px 2px calc(8px + env(safe-area-inset-bottom,0px));box-shadow:0 -8px 18px -10px rgba(0,0,0,.25)}
+  .args-col::before{content:"Arguments : touche-en un, puis touche le client";font-size:.78rem;font-weight:700;color:var(--blue)}
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><b>Coach <span>1re B</span></b><small>Bac Pro MCV · Première · Prospection et valorisation de l’offre</small></div>
+    <nav class="tabs" aria-label="Sections">
+      <a href="#accueil" data-tab="accueil">Accueil</a>
+      <a href="#pfmp" data-tab="pfmp">Appel PFMP</a>
+      <a href="#ciblage" data-tab="ciblage">Ciblage</a>
+      <a href="#argu" data-tab="argu">Argumentaire</a>
+      <a href="#calcul" data-tab="calcul">Flash-calcul</a>
+      <a href="#sms" data-tab="sms">SMS &amp; e-mail</a>
+      <a href="#notions" data-tab="notions">Notions</a>
+    </nav>
+    <button class="btn sm" id="cfg-btn" aria-expanded="false" aria-controls="cfg">⚙ Réglages</button>
+  </div>
+</header>
+
+<main class="wrap">
+<div class="cfg" id="cfg" hidden>
+  <div class="cfg-in" role="dialog" aria-label="Réglages">
+    <div class="row" style="justify-content:space-between"><h2 class="h2">Réglages</h2><button class="btn sm" id="cfg-close">Fermer</button></div>
+    <div class="cfg-row"><b>Mode Zen : temps de réponse</b><span class="muted">Pour prendre le temps de lire. Aucun point perdu à cause du chrono.</span>
+      <div class="seg" role="group" aria-label="Temps de réponse"><button data-zen="normal">Normal</button><button data-zen="lent">Temps doublé</button><button data-zen="off">Sans chrono</button></div></div>
+    <div class="cfg-row"><label class="sw"><input type="checkbox" id="cfg-dys"> <b>Confort de lecture</b></label><span class="muted">Police très lisible (Lexend), texte plus grand, interlignes et espacements augmentés.</span></div>
+    <div class="cfg-row" id="cfg-voice-row"><label class="sw"><input type="checkbox" id="cfg-voice"> <b>Voix des interlocuteurs</b></label><span class="muted">Dans l’appel PFMP, les répliques sont lues à voix haute. Le ton change quand la patience baisse.</span><button class="btn sm" id="cfg-test" style="justify-self:start">🔊 Tester la voix</button></div>
+    <div class="cfg-row" id="cfg-read-row"><label class="sw"><input type="checkbox" id="cfg-read"> <b>Bouton « écouter » sur les textes</b></label><span class="muted">Ajoute un 🔈 pour entendre chaque réponse proposée et chaque énoncé de calcul.</span></div>
+  </div>
+</div>
+<section data-view="accueil">
+  <div class="panel bilan-box" id="bilan-box" hidden></div>
+  <div class="hero">
+    <div style="display:grid;gap:14px">
+      <p class="eyebrow">Première Bac Pro MCV · Option B</p>
+      <h1 class="h1">Décroche ton stage, <span class="hl">cible</span>, <span class="hl">argumente</span> et <span class="hl">calcule</span> comme un pro.</h1>
+      <p class="lede">Six entraînements courts pour les compétences de l’option B : appeler une entreprise qui prospecte (immobilier, assurance, automobile, intérim) pour ta PFMP, qualifier un fichier, construire un argumentaire, automatiser les calculs, rédiger un SMS ou un e-mail professionnel. Chaque erreur est corrigée sur le moment.</p>
+      <div class="row"><a class="btn primary" href="#pfmp">Simuler un appel de stage</a><a class="btn" href="#calcul">Mode survie calcul</a></div>
+    </div>
+    <div class="exam-card">
+      <p class="eyebrow">Ta progression</p>
+      <div class="facts"><div class="fact"><b id="xp-total">0</b><span>points d’expérience</span></div><div class="fact"><b id="badge-count">0</b><span>badges</span></div><div class="fact"><b id="streak-best">0</b><span>meilleure série calcul</span></div></div>
+      <div class="badges" id="badges"></div>
+      <button class="btn" id="bilan-btn">📋 Générer mon bilan</button>
+    </div>
+  </div>
+  <div style="display:grid;gap:12px">
+    <h2 class="h2">Les modules</h2>
+    <div class="modules" id="modules"></div>
+  </div>
+  <div style="display:grid;gap:12px">
+    <h2 class="h2">Les 4 méthodes à connaître par cœur</h2>
+    <div class="memo">
+      <div><b>CROC</b><span><b>C</b>ontact : saluer, se présenter, vérifier l’interlocuteur et sa disponibilité. <b>R</b>aison : dire pourquoi on appelle. <b>O</b>bjectif : obtenir un RDV ou un accord. <b>C</b>onclusion : reformuler, remercier, prendre congé. Le programme découpe le début de l’appel en 4 temps : entame, accroche, disponibilité, objet.</span></div>
+      <div><b>SONCASE</b><span>Les mobiles d’achat : Sécurité, Orgueil, Nouveauté, Confort, Argent, Sympathie, Environnement.</span></div>
+      <div><b>CAP</b><span>Un argument = une <b>C</b>aractéristique du produit → l’<b>A</b>vantage pour le client → la <b>P</b>reuve.</span></div>
+      <div><b>OCA</b><span><b>O</b>bserver la fiche, <b>C</b>alculer ce qui n’est pas donné directement (âge, effectif, distance), <b>A</b>dapter sa décision à la cible.</span></div>
+    </div>
+  </div>
+</section>
+
+<section data-view="pfmp" hidden><div id="pfmp-root" style="display:grid;gap:18px"></div></section>
+<section data-view="ciblage" hidden><div id="cib-root" style="display:grid;gap:18px"></div></section>
+<section data-view="argu" hidden><div id="argu-root" style="display:grid;gap:18px"></div></section>
+<section data-view="calcul" hidden><div id="calc-root" style="display:grid;gap:18px"></div></section>
+<section data-view="sms" hidden><div id="sms-root" style="display:grid;gap:18px"></div></section>
+<section data-view="notions" hidden>
+  <div style="display:grid;gap:8px"><p class="eyebrow">Notions</p><h1 class="h1">Le vocabulaire de Première</h1><p class="lede">Clique sur une carte pour la retourner. Marque celles que tu sais.</p></div>
+  <div class="row"><div class="chips" id="fc-filter"></div><span class="muted" id="fc-count"></span></div>
+  <div class="cards" id="cards"></div>
+</section>
+</main>
+<div class="toast" id="toast" hidden></div>
+<script>
+/* ================= Utilitaires ================= */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pick = a => a[Math.floor(Math.random() * a.length)];
+const rnd = (a, b) => Math.floor(Math.random() * (b - a + 1)) + a;
+const shuffle = a => { const b = [...a]; for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
+const r2 = n => Math.round((n + Number.EPSILON) * 100) / 100;
+const fmt = (n, d = 2) => Number(n).toLocaleString("fr-FR", {minimumFractionDigits: d, maximumFractionDigits: d});
+const fmt0 = n => Number(n).toLocaleString("fr-FR", {maximumFractionDigits: 2});
+const parseNum = v => { const s = String(v ?? "").replace(/\s|€|%| /g, "").replace(",", "."); return s === "" ? NaN : Number(s); };
+function toast(m){ const t = $("#toast"); t.textContent = m; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, 2000); }
+const KEY = "coach1reB.v1";
+let S = {}; try { S = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { S = {}; }
+S.xp ??= 0; S.best ??= {}; S.badges ??= {}; S.known ??= {};
+S.cfg ??= {}; S.cfg.zen ??= "normal"; S.cfg.dys ??= false; S.cfg.voice ??= false; S.cfg.read ??= false; S.ident ??= {nom:"", classe:""}; S.zenUsed ??= false;
+const zenFactor = () => S.cfg.zen === "lent" ? 2 : S.cfg.zen === "off" ? 0 : 1;
+function markZen(){ if (S.cfg.zen !== "normal" && !S.zenUsed) { S.zenUsed = true; save(); } }
+
+/* ---------- Synthèse vocale ---------- */
+const TTS = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+let VOICES = [];
+function loadVoices(){ try { VOICES = speechSynthesis.getVoices().filter(v => /^fr/i.test(v.lang)); } catch (e) { VOICES = []; } }
+if (TTS) { loadVoices(); try { speechSynthesis.addEventListener("voiceschanged", loadVoices); } catch (e) {} }
+const FEM = /(am[ée]lie|audrey|aur[ée]lie|marie|julie|c[ée]line|denise|hortense|virginie|[ée]lo[iï]se|l[ée]a|chantal|joana|vivienne|female|femme)/i;
+const MAL = /(thomas|nicolas|daniel|henri|paul|claude|guillaume|jacques|mathieu|antoine|r[ée]my|male|homme)/i;
+function voiceFor(g){ if (!VOICES.length) return null; return VOICES.find(v => (g === "f" ? FEM : MAL).test(v.name)) || VOICES[g === "f" ? 0 : VOICES.length - 1]; }
+function speak(text, o = {}){
+  if (!TTS || (!S.cfg.voice && !o.force)) return;
+  try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.lang = "fr-FR"; const v = voiceFor(o.g || "f"); if (v) u.voice = v;
+    const m = o.mood || 0; u.rate = [1, 1.08, 1.2][m]; u.pitch = (o.g === "m" ? .95 : 1.05) - [0, .08, .2][m]; speechSynthesis.speak(u); } catch (e) {}
+}
+function hush(){ if (TTS) try { speechSynthesis.cancel(); } catch (e) {} }
+
+/* ---------- Réglages ---------- */
+function applyCfg(){
+  document.body.classList.toggle("dys", !!S.cfg.dys);
+  $$("[data-zen]").forEach(b => b.setAttribute("aria-pressed", b.dataset.zen === S.cfg.zen));
+  $("#cfg-dys").checked = !!S.cfg.dys; $("#cfg-voice").checked = !!S.cfg.voice; $("#cfg-read").checked = !!S.cfg.read;
+  if (!TTS) { $("#cfg-voice-row").hidden = true; $("#cfg-read-row").hidden = true; }
+  $("#cfg-btn").textContent = S.cfg.zen !== "normal" ? "⚙ Réglages · Zen" : "⚙ Réglages";
+}
+function openCfg(on){ $("#cfg").hidden = !on; $("#cfg-btn").setAttribute("aria-expanded", on); if (on) $("#cfg-close").focus(); }
+$("#cfg-btn").addEventListener("click", () => openCfg($("#cfg").hidden));
+$("#cfg-close").addEventListener("click", () => openCfg(false));
+$("#cfg").addEventListener("click", e => { if (e.target.id === "cfg") openCfg(false); const z = e.target.closest("[data-zen]"); if (z) { S.cfg.zen = z.dataset.zen; save(); applyCfg(); toast(z.dataset.zen === "normal" ? "Chrono normal" : z.dataset.zen === "lent" ? "Mode Zen : temps doublé" : "Mode Zen : sans chrono"); } });
+$("#cfg").addEventListener("change", e => { const id = e.target.id; if (id === "cfg-dys") S.cfg.dys = e.target.checked; if (id === "cfg-voice") S.cfg.voice = e.target.checked; if (id === "cfg-read") S.cfg.read = e.target.checked; save(); applyCfg(); });
+$("#cfg-test").addEventListener("click", () => speak("Bonjour, agence Nord Habitat, je vous écoute.", {g:"f", force:true}));
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#cfg").hidden) openCfg(false); });
+document.addEventListener("click", e => { const b = e.target.closest("[data-say]"); if (b) { e.preventDefault(); e.stopPropagation(); speak(b.dataset.say, {g:"f", force:true}); } }, true);
+const sayBtn = (t, light) => S.cfg.read && TTS ? `<button type="button" class="say ${light ? "light" : ""}" data-say="${esc(t)}" aria-label="Écouter">🔈</button>` : "";
+
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+function addXp(n){ S.xp += Math.max(0, Math.round(n)); save(); }
+function best(k, v){ if (v > (S.best[k] || 0)) { S.best[k] = v; save(); return true; } return false; }
+const BADGES = {
+ appel:["📞 Premier appel réussi","Terminer un appel PFMP avec la patience au-dessus de 50 %."],
+ appelpro:["🎯 Appel parfait","Terminer un appel sans aucun mauvais choix."],
+ cible:["🔎 Œil de lynx","Qualifier une campagne avec 90 % de bonnes décisions."],
+ rgpd:["🛡 Gardien du RGPD","Repérer toutes les fiches à rejeter d’une campagne."],
+ argu:["💬 Argumentaire parfait","Associer tous les arguments du premier coup."],
+ serie10:["🔥 Série de 10","Enchaîner 10 calculs justes en mode survie."],
+ serie25:["⚡ Série de 25","Enchaîner 25 calculs justes."],
+ sms:["✉️ Message parfait","Valider tous les critères d’une mission SMS ou e-mail."]
+};
+function badge(k){ if (!S.badges[k]) { S.badges[k] = Date.now(); save(); toast("Badge débloqué : " + BADGES[k][0]); } }
+
+/* ================= Navigation ================= */
+const VIEWS = ["accueil","pfmp","ciblage","argu","calcul","sms","notions"];
+const INIT = {};
+function route(){
+  let h = (location.hash || "#accueil").slice(1); if (!VIEWS.includes(h)) h = "accueil";
+  $$("section[data-view]").forEach(s => s.hidden = s.dataset.view !== h);
+  $$("nav.tabs a").forEach(a => a.dataset.tab === h ? a.setAttribute("aria-current","page") : a.removeAttribute("aria-current"));
+  if (h === "accueil") renderHome();
+  if (!INIT[h]) { INIT[h] = true; ({pfmp:pfmpHome, ciblage:cibHome, argu:arguHome, calcul:calcHome, sms:smsHome, notions:drawCards})[h]?.(); }
+  window.scrollTo({top:0});
+}
+window.addEventListener("hashchange", route);
+const HOMES = () => ({pfmp:()=>{clearInterval(CALL?.timer); CALL=null; pfmpHome();}, ciblage:()=>{CB=null; cibHome();}, argu:()=>{AG=null; arguHome();}, calcul:()=>{if(SV){clearInterval(SV.timer); SV=null;} calcHome();}, sms:()=>{MS=null; smsHome();}});
+document.querySelector("nav.tabs").addEventListener("click", e => { const a = e.target.closest("a[data-tab]"); if (!a) return; const t = a.dataset.tab;
+  if (location.hash.slice(1) === t) { e.preventDefault(); HOMES()[t]?.(); window.scrollTo({top:0}); }
+  else if (INIT[t]) { HOMES()[t]?.(); } });
+
+const MODULES = [
+ ["pfmp","Appel PFMP","Méthode CROC","Appelle une agence immobilière, un cabinet d’assurance, une concession ou une agence d’intérim pour décrocher ton stage. La patience du décideur baisse à chaque maladresse."],
+ ["ciblage","Ciblage express","Méthode OCA · RGPD","Garde, écarte ou rejette des fiches prospects en quelques secondes. Glisse la carte ou utilise les boutons."],
+ ["argu","Argumentaire SONCAS","CAP · mobiles d’achat","Associe chaque argument au bon client. Une mauvaise association est expliquée."],
+ ["calcul","Flash-calcul","Mode survie","TVA, remises, marges, évolutions : 3 vies, un chrono qui accélère, la formule à chaque erreur."],
+ ["sms","SMS & e-mail","Écrit professionnel","Rédige un SMS ou un e-mail avec aperçu en direct et vérification automatique."],
+ ["notions","Notions","Vocabulaire","Les mots du commercial en cartes à retourner."]
+];
+function renderHome(){
+  $("#xp-total").textContent = fmt0(S.xp); $("#badge-count").textContent = Object.keys(S.badges).length; $("#streak-best").textContent = S.best.serie || 0;
+  $("#badges").innerHTML = Object.entries(BADGES).map(([k,[n,d]]) => `<span class="badge ${S.badges[k]?"on":""}" title="${esc(d)}">${esc(n)}</span>`).join("");
+  const bestTxt = {pfmp: S.best.pfmp ? `Meilleur appel : ${S.best.pfmp}/20` : "", ciblage: S.best.ciblage ? `Meilleure campagne : ${S.best.ciblage} %` : "", argu: S.best.argu ? `Meilleur score : ${S.best.argu} %` : "", calcul: S.best.serie ? `Record de série : ${S.best.serie}` : "", sms: S.best.sms ? `Meilleur message : ${S.best.sms} %` : "", notions: `${Object.values(S.known).filter(Boolean).length} / ${NOTIONS.length} sues`};
+  $("#modules").innerHTML = MODULES.map(([k,n,e,d]) => `<a class="module" href="#${k}"><p class="eyebrow">${e}</p><h3>${n}</h3><p>${d}</p><span class="mod-best">${bestTxt[k] || "Pas encore joué"}</span></a>`).join("");
+}
+
+/* ---------- Bilan à envoyer au professeur ---------- */
+function bilanLines(){
+  const d = new Date(); const L = [];
+  L.push(`BILAN COACH 1re B — Bac Pro MCV option B`);
+  L.push(`Élève : ${S.ident.nom || "(nom non renseigné)"}${S.ident.classe ? " · " + S.ident.classe : ""}`);
+  L.push(`Date : ${d.toLocaleDateString("fr-FR")} à ${d.toLocaleTimeString("fr-FR", {hour:"2-digit", minute:"2-digit"})}`);
+  L.push(""); L.push(`Points d’expérience : ${fmt0(S.xp)}`);
+  const bs = Object.keys(BADGES).filter(k => S.badges[k]); L.push(`Badges (${bs.length}/${Object.keys(BADGES).length}) : ${bs.length ? bs.map(k => BADGES[k][0].replace(/^\S+\s/, "")).join(", ") : "aucun pour l’instant"}`);
+  L.push(""); L.push("Meilleurs résultats :");
+  const calls = CALLS.filter(c => S.best["call_"+c.id] != null).map(c => `${c.boutique.split(" (")[0]} ${fmt0(S.best["call_"+c.id])}/20`);
+  L.push(`• Appel PFMP : ${calls.join(" ; ") || "pas encore joué"}`);
+  const camps = CAMPS.filter(c => S.best["camp_"+c.id] != null).map(c => `${c.titre.split(" · ")[0]} ${S.best["camp_"+c.id]} %`);
+  L.push(`• Ciblage : ${camps.join(" ; ") || "pas encore joué"}`);
+  const ags = ARGSETS.filter(c => S.best["argu_"+c.id] != null).map(c => `${c.titre.split(" · ")[0]} ${S.best["argu_"+c.id]} %`);
+  L.push(`• Argumentaire : ${ags.join(" ; ") || "pas encore joué"}`);
+  L.push(`• Flash-calcul : ${S.best.serie ? `série record ${S.best.serie}, meilleur score ${S.best.survie || 0}` : "pas encore joué"}`);
+  const ms = MISSIONS.filter(m => S.best["msg_"+m.id] != null).map(m => `${m.titre.split(" · ")[1] || m.titre} ${S.best["msg_"+m.id]} %`);
+  L.push(`• SMS & e-mail : ${ms.join(" ; ") || "pas encore rédigé"}`);
+  L.push(`• Notions sues : ${Object.values(S.known).filter(Boolean).length}/${NOTIONS.length}`);
+  L.push(""); L.push(S.zenUsed ? "Aménagement : mode Zen utilisé (temps de réponse allongé ou sans chrono)." : "Conditions : chronos normaux.");
+  return L;
+}
+let DL = null; (async () => { try { DL = window.claude?.use ? await claude.use("downloads") : null; } catch (e) { DL = null; } })();
+function openBilan(){
+  const box = $("#bilan-box"); box.hidden = false;
+  box.innerHTML = `<div class="row" style="justify-content:space-between"><h2 class="h2">📋 Mon bilan</h2><button class="btn sm" id="bl-close">Fermer</button></div>
+   <p class="muted">Renseigne ton nom, puis copie le texte dans Pronote, Moodle ou un mail, ou enregistre-le en image.</p>
+   <div class="form-grid"><div style="display:grid;gap:4px"><label for="bl-nom">Prénom et nom</label><input id="bl-nom" autocomplete="name" value="${esc(S.ident.nom)}"></div>
+   <div style="display:grid;gap:4px"><label for="bl-classe">Classe</label><input id="bl-classe" value="${esc(S.ident.classe)}" placeholder="1re MCV B"></div></div>
+   <textarea id="bl-txt" readonly aria-label="Texte du bilan"></textarea>
+   <div class="row"><button class="btn primary" id="bl-copy">Copier le texte</button><button class="btn" id="bl-img">Créer l’image</button></div>
+   <div id="bl-out" style="display:grid;gap:8px"></div>`;
+  const fill = () => { $("#bl-txt").value = bilanLines().join("\n"); };
+  fill(); box.scrollIntoView({behavior:"smooth", block:"start"});
+  box.oninput = e => { if (e.target.id === "bl-nom") S.ident.nom = e.target.value.slice(0, 60); if (e.target.id === "bl-classe") S.ident.classe = e.target.value.slice(0, 30); save(); fill(); };
+  $("#bl-close").onclick = () => { box.hidden = true; };
+  $("#bl-copy").onclick = () => { const t = $("#bl-txt").value;
+    const fallback = () => { const ta = $("#bl-txt"); ta.focus(); ta.select(); toast("Texte sélectionné : copie-le avec Ctrl + C (ou appui long)"); };
+    try { navigator.clipboard.writeText(t).then(() => toast("Bilan copié : colle-le dans Pronote, Moodle ou un mail"), fallback); } catch (e) { fallback(); } };
+  $("#bl-img").onclick = async () => {
+    const blob = await bilanImage(); const out = $("#bl-out"); const url = URL.createObjectURL(blob);
+    out.innerHTML = `<img src="${url}" alt="Image du bilan">${DL ? `<button class="btn primary" id="bl-save" style="justify-self:start">Enregistrer l’image</button>` : `<p class="muted">Pour l’enregistrer : appui long sur l’image (téléphone) ou clic droit puis « Enregistrer l’image » (ordinateur).</p>`}`;
+    const sv = $("#bl-save"); if (sv) sv.onclick = async () => { try { await DL.save({filename:`bilan-coach-1re-b-${(S.ident.nom || "eleve").toLowerCase().replace(/[^a-z0-9]+/gi, "-")}.png`, data:blob}); toast("Image enregistrée"); } catch (e) { if (e?.code !== "declined") toast("Enregistrement impossible ici : fais un appui long sur l’image"); } };
+  };
+}
+async function bilanImage(){
+  try { await document.fonts.ready; } catch (e) {}
+  const L = bilanLines(); const W = 1080, P = 70; const cv = document.createElement("canvas"); const ctx = cv.getContext("2d");
+  const body = "28px 'Atkinson Hyperlegible', 'Segoe UI', sans-serif";
+  const wrap = (t, max) => { ctx.font = body; const out = []; let line = ""; for (const w of t.split(" ")) { const tt = line ? line + " " + w : w; if (ctx.measureText(tt).width > max && line) { out.push(line); line = w; } else line = tt; } out.push(line); return out; };
+  const rows = []; L.slice(4).forEach(l => { const st = /^(Points|Badges|Meilleurs|Aménagement|Conditions)/.test(l) ? (l.startsWith("Aménagement") ? "zen" : "b") : ""; (l === "" ? [""] : wrap(l, W - 2 * P)).forEach(x => rows.push([x, st])); });
+  cv.width = W; cv.height = 360 + rows.length * 42 + 80;
+  ctx.fillStyle = "#f2f4f8"; ctx.fillRect(0, 0, W, cv.height);
+  ctx.fillStyle = "#0e7466"; ctx.fillRect(0, 0, W, 16);
+  ctx.fillStyle = "#18264a"; ctx.font = "800 56px 'Bricolage Grotesque', 'Segoe UI', sans-serif"; ctx.fillText("Coach 1re B", P, 110);
+  ctx.font = "600 26px 'Atkinson Hyperlegible', sans-serif"; ctx.fillStyle = "#4b5878"; ctx.fillText("Bilan d’entraînement · Bac Pro MCV option B", P, 152);
+  ctx.fillStyle = "#18264a"; ctx.font = "700 34px 'Atkinson Hyperlegible', sans-serif"; ctx.fillText(L[1].replace("Élève : ", ""), P, 222);
+  ctx.font = body; ctx.fillStyle = "#4b5878"; ctx.fillText(L[2], P, 264);
+  ctx.fillStyle = "#d5dceb"; ctx.fillRect(P, 300, W - 2 * P, 2);
+  let y = 360; rows.forEach(([r, st]) => { ctx.font = st ? "700 28px 'Atkinson Hyperlegible', sans-serif" : body; ctx.fillStyle = st === "zen" ? "#0e7466" : "#18264a"; ctx.fillText(r, P, y); y += 42; });
+  return await new Promise(res => cv.toBlob(res, "image/png"));
+}
+
+/* =====================================================================
+   1. APPEL PFMP — méthode CROC
+   ===================================================================== */
+const PH = {C:"Contact", R:"Raison", O:"Objectif", F:"Conclusion"};
+const CALLS = [
+ {id:"immo", lieu:"Aulnay-sous-Bois", nom:"Mme Diallo", boutique:"Agence Nord Habitat (agence immobilière)", intro:"Tu appelles une agence immobilière pour ta PFMP de 4 semaines en mars. Les négociateurs y prospectent des propriétaires par téléphone et en porte-à-porte.",
+  steps:[
+   {ph:"C", them:"Agence Nord Habitat, bonjour !", opts:[
+     {q:"good", t:"Bonjour Madame, je m’appelle Inès Martin, élève en Première Bac Pro Métiers du commerce et de la vente, option prospection, au lycée de Villepinte. Pourrais-je parler au directeur ou à la directrice de l’agence ?", fb:"Entame complète : salutation, présentation, option de ton bac et demande du bon interlocuteur.", rep:"C’est moi, Mme Diallo, directrice de l’agence. Je vous écoute."},
+     {q:"bad", t:"Ouais bonjour, c’est pour un stage.", fb:"Registre familier et aucune présentation : tu perds tout de suite en crédibilité.", rep:"Euh… Qui êtes-vous ? Bon, c’est moi la directrice."},
+     {q:"meh", t:"Bonjour, je voudrais parler au responsable s’il vous plaît.", fb:"Poli, mais tu ne t’es pas présenté(e) : la directrice ne sait pas à qui elle parle.", rep:"C’est moi. C’est de la part de qui ?"}]},
+   {ph:"C", them:null, opts:[
+     {q:"good", t:"Merci Madame. Avez-vous deux minutes à m’accorder ?", fb:"Vérifier la disponibilité : c’est une étape à part entière de la prise de contact.", rep:"Oui, allez-y, j’ai un rendez-vous de signature dans un quart d’heure."},
+     {q:"meh", t:"Alors voilà, en fait je cherche un stage…", fb:"Tu enchaînes sans vérifier si ton interlocutrice est disponible.", rep:"Hum… Allez-y."},
+     {q:"bad", t:"Je vous dérange pas longtemps, c’est mon prof qui m’oblige à appeler.", fb:"Ne jamais dire que tu appelles par obligation : tu montres un manque de motivation.", rep:"Ah… Bon, je vous écoute."}]},
+   {ph:"R", them:null, opts:[
+     {q:"good", t:"Je recherche une entreprise d’accueil pour ma période de formation en milieu professionnel de 4 semaines, du 2 au 27 mars. Ma formation porte sur la prospection et la prise de rendez-vous.", fb:"Raison claire et précise : durée, dates, et lien avec le métier de l’agence.", rep:"D’accord. Et pourquoi l’immobilier ?"},
+     {q:"meh", t:"Je cherche un stage.", fb:"Trop vague : quelle durée ? quelles dates ? quelle formation ?", rep:"Un stage de quoi ? Quand ? … Bon, pourquoi l’immobilier ?"},
+     {q:"bad", t:"Vous recrutez ? Il me faut un stage payé.", fb:"Confusion entre emploi et PFMP, et exigence déplacée.", rep:"Ce n’est pas un recrutement… Et pourquoi l’immobilier, d’ailleurs ?"}]},
+   {ph:"R", them:null, opts:[
+     {q:"good", t:"Je veux apprendre à prospecter des propriétaires, à qualifier un fichier et à prendre des rendez-vous d’estimation. Votre agence est très présente sur Aulnay, c’est l’endroit idéal pour me former.", fb:"Tu cites les vraies activités de l’agence et tu la valorises.", rep:"C’est bien vu. Mais mes négociateurs sont toujours en rendez-vous à l’extérieur, personne ne pourra vous encadrer."},
+     {q:"meh", t:"Parce que c’est près de chez moi.", fb:"Argument vrai mais centré sur toi, pas sur l’entreprise.", rep:"Je vois. Mais mes négociateurs sont toujours dehors, personne ne pourra vous encadrer."},
+     {q:"bad", t:"J’ai appelé toutes les agences, personne ne veut de moi.", fb:"Tu dévalorises ta démarche et l’agence devient un « dernier choix ».", rep:"Ah… Nous non plus, on n’a personne pour vous encadrer."}]},
+   {ph:"O", them:null, opts:[
+     {q:"good", t:"Je comprends. Je peux justement les décharger : relances téléphoniques, mise à jour du fichier propriétaires, préparation des rendez-vous. Et je peux les accompagner en porte-à-porte. Mon professeur assure le suivi.", fb:"Objection traitée : tu reformules et tu transformes le frein en service rendu.", rep:"Ah, vu comme ça, ça pourrait nous aider. Qu’est-ce que vous me proposez ?"},
+     {q:"bad", t:"Mais c’est obligatoire pour mon diplôme !", fb:"La directrice n’a aucune obligation : cet argument ne la concerne pas.", rep:"Je comprends, mais ce n’est pas mon problème… Bon, qu’est-ce que vous voulez exactement ?"},
+     {q:"meh", t:"Ah d’accord… Tant pis alors ?", fb:"Tu abandonnes à la première objection. Il fallait la traiter.", rep:"Attendez, je n’ai pas dit non. Qu’attendez-vous de moi ?"}]},
+   {ph:"O", them:null, opts:[
+     {q:"good", t:"J’aimerais vous rencontrer pour vous remettre mon CV et la convention de stage. Seriez-vous disponible mardi à 14 h ou mercredi à 10 h ?", fb:"Objectif clair et alternative de deux créneaux : elle n’a plus qu’à choisir.", rep:"Mercredi 10 h, ça me va."},
+     {q:"meh", t:"Je peux vous envoyer mon CV par mail ?", fb:"Acceptable, mais un CV par mail se perd vite. Un rendez-vous est plus efficace.", rep:"Oui… ou passez plutôt mercredi à 10 h, c’est mieux."},
+     {q:"bad", t:"Je passerai quand j’aurai le temps.", fb:"Aucun engagement : personne ne t’attendra.", rep:"Hum… Passez mercredi à 10 h si vous êtes sérieuse."}]},
+   {ph:"F", them:null, opts:[
+     {q:"good", t:"Parfait, je récapitule : mercredi à 10 h à l’agence, je demande Mme Diallo et j’apporte mon CV et ma convention. Merci beaucoup, bonne journée Madame !", fb:"Reformulation complète, remerciements, prise de congé polie.", rep:"Très bien, à mercredi !"},
+     {q:"meh", t:"OK merci, à mercredi.", fb:"Poli, mais sans reformulation : risque d’oublier l’heure ou le nom.", rep:"À mercredi."},
+     {q:"bad", t:"Cool, bisous !", fb:"Registre totalement inadapté à un appel professionnel.", rep:"… Au revoir."}]}
+  ]},
+ {id:"assur", lieu:"Sevran", nom:"M. Lefèvre", boutique:"Cabinet Horizon Assurances (agent général)", intro:"Tu appelles un cabinet d’assurance qui prospecte des particuliers et des artisans. Une assistante filtre les appels avant l’agent général.",
+  steps:[
+   {ph:"C", them:"Cabinet Horizon Assurances, Sarah à l’appareil, bonjour.", opts:[
+     {q:"good", t:"Bonjour Sarah, je m’appelle Yanis Benali, élève en Première Bac Pro commerce, option prospection. Pourrais-je parler à M. Lefèvre, l’agent général, s’il vous plaît ?", fb:"Présentation et demande précise du décideur, en reprenant le prénom de l’assistante.", rep:"Il est en rendez-vous client. C’est à quel sujet ?"},
+     {q:"meh", t:"Bonjour, le chef est là ?", fb:"Pas de présentation et vocabulaire approximatif.", rep:"M. Lefèvre ? Il est occupé. C’est pour quoi ?"},
+     {q:"bad", t:"Allô ? Passez-moi le patron.", fb:"Ton directif et impoli : le barrage ne te laissera pas passer.", rep:"… C’est à quel sujet ?"}]},
+   {ph:"C", them:null, opts:[
+     {q:"good", t:"C’est au sujet d’une demande de stage en entreprise. Pouvez-vous me dire à quel moment je peux le joindre, ou me le passer s’il a une minute ?", fb:"Raison courte pour franchir le barrage, et deux solutions proposées.", rep:"Il sort de rendez-vous, ne quittez pas… M. Lefèvre, oui ?"},
+     {q:"meh", t:"C’est personnel.", fb:"Le barrage se méfie : donne une raison courte et honnête.", rep:"Bon, je vous le passe… M. Lefèvre, oui ?"},
+     {q:"bad", t:"Je vous dirai pas, passez-le-moi.", fb:"Agressif envers l’assistante : elle peut raccrocher.", rep:"(soupir) … M. Lefèvre, oui ?"}]},
+   {ph:"C", them:null, opts:[
+     {q:"good", t:"Bonjour Monsieur Lefèvre, Yanis Benali, élève en Première Bac Pro commerce au lycée de Villepinte. Avez-vous quelques instants à m’accorder ?", fb:"Tu te représentes au décideur et tu vérifies sa disponibilité.", rep:"Deux minutes, oui."},
+     {q:"meh", t:"Oui bonjour, c’est pour le stage.", fb:"Le décideur n’a pas entendu ta présentation : recommence-la.", rep:"Quel stage ? Qui êtes-vous ?"},
+     {q:"bad", t:"Ah enfin, ça fait longtemps que j’attends !", fb:"Reproche inutile : très mauvaise première impression.", rep:"J’ai un client qui attend, faites vite."}]},
+   {ph:"R", them:null, opts:[
+     {q:"good", t:"Je recherche une entreprise pour ma période de formation de 4 semaines, du 2 au 27 mars. J’aimerais participer à vos actions de prospection : appels pour proposer des bilans d’assurance, prise de rendez-vous, mise à jour du fichier clients.", fb:"Raison précise et activités concrètes de l’option B : très convaincant.", rep:"Intéressant. Mais je préfère que vous m’envoyiez un mail."},
+     {q:"meh", t:"Je cherche un stage dans l’assurance.", fb:"Trop vague : dates, durée et motivation manquent.", rep:"D’accord… Envoyez-moi un mail."},
+     {q:"bad", t:"N’importe quelle entreprise m’ira, c’est juste pour valider.", fb:"Tu montres que ce cabinet ne t’intéresse pas vraiment.", rep:"Envoyez un mail, on verra."}]},
+   {ph:"O", them:null, opts:[
+     {q:"good", t:"Volontiers. Pour que mon mail vous parvienne, pouvez-vous me confirmer votre adresse ? Et puis-je passer déposer mon CV jeudi après-midi pour vous rencontrer ?", fb:"Tu acceptes l’objection et tu obtiens à la fois l’adresse et un rendez-vous.", rep:"lefevre@horizon-assurances.fr. Jeudi vers 15 h, d’accord."},
+     {q:"meh", t:"D’accord, je vous envoie ça.", fb:"Sans adresse ni rendez-vous, ton mail risque de ne jamais arriver au bon endroit.", rep:"C’est lefevre@horizon-assurances.fr. Passez jeudi 15 h si vous voulez."},
+     {q:"bad", t:"Un mail ? Mais personne ne les lit, les mails !", fb:"Contredire le décideur le braque.", rep:"Moi je les lis. Jeudi 15 h si vous voulez, sinon tant pis."}]},
+   {ph:"F", them:null, opts:[
+     {q:"good", t:"Merci beaucoup. Je récapitule : je vous envoie mon CV aujourd’hui à lefevre@horizon-assurances.fr et je passe au cabinet jeudi à 15 h. Bonne journée Monsieur !", fb:"Reformulation de tous les engagements et prise de congé.", rep:"Parfait, à jeudi."},
+     {q:"meh", t:"Merci, au revoir.", fb:"Il manque la reformulation de l’adresse et du rendez-vous.", rep:"Au revoir."},
+     {q:"bad", t:"Ok ok, salut.", fb:"Familier : tu perds le bénéfice de l’appel.", rep:"…"}]}
+  ]},
+ {id:"auto", lieu:"Villepinte", nom:"M. Ferreira", boutique:"Nord Auto (concession automobile)", intro:"Tu appelles le chef des ventes d’une concession automobile. Ses commerciaux prospectent les entreprises pour leurs flottes de véhicules et relancent les clients en fin de contrat.",
+  steps:[
+   {ph:"C", them:"Nord Auto Villepinte, service commercial, bonjour.", opts:[
+     {q:"good", t:"Bonjour, Lucas Moreau, élève en Première Bac Pro Métiers du commerce et de la vente, option prospection. Pourrais-je parler au chef des ventes, M. Ferreira ?", fb:"Présentation et demande nominative du décideur : tu as préparé ton appel.", rep:"C’est lui-même. Je vous écoute."},
+     {q:"meh", t:"Bonjour, c’est Lucas, je peux parler à quelqu’un pour un stage ?", fb:"Présentation incomplète et interlocuteur non ciblé.", rep:"Je suis le chef des ventes, M. Ferreira. Oui ?"},
+     {q:"bad", t:"Allô, vous avez des voitures pas chères ?", fb:"Tu te fais passer pour un client : c’est malhonnête et hors sujet.", rep:"Ce n’est pas le sujet… Que voulez-vous ?"}]},
+   {ph:"C", them:null, opts:[
+     {q:"good", t:"Je serai bref. Préférez-vous que je vous rappelle à un meilleur moment ?", fb:"Face à un chef des ventes occupé, proposer de rappeler est très professionnel.", rep:"Non, allez-y, deux minutes."},
+     {q:"meh", t:"Ce ne sera pas long.", fb:"Bien, mais tu aurais pu proposer de rappeler.", rep:"Allez-y."},
+     {q:"bad", t:"Ça va prendre au moins dix minutes.", fb:"Tu fais fuir un interlocuteur pressé.", rep:"Je n’ai pas dix minutes. Résumez."}]},
+   {ph:"R", them:null, opts:[
+     {q:"good", t:"Je recherche une entreprise d’accueil pour 4 semaines en mars. J’aimerais découvrir la prospection des entreprises pour leurs véhicules de société et la relance des clients dont le contrat de location se termine.", fb:"Raison, dates et activités de prospection propres à une concession.", rep:"Le problème, c’est que nos clients sont des professionnels exigeants, c’est technique."},
+     {q:"meh", t:"C’est pour un stage en mars.", fb:"Il manque la durée et ta motivation.", rep:"Nos clients sont des pros exigeants, c’est technique."},
+     {q:"bad", t:"Je veux juste un stage où on ne fait pas grand-chose.", fb:"Aucun manager ne veut d’un stagiaire passif.", rep:"Ce n’est pas le bon endroit alors… Et puis c’est technique, ici."}]},
+   {ph:"O", them:null, opts:[
+     {q:"good", t:"C’est justement ce que je veux apprendre. Je peux commencer par la qualification du fichier entreprises et la prise de rendez-vous par téléphone, pendant que vos commerciaux sont sur le terrain. Puis-je passer vous rencontrer samedi matin ou lundi après-midi ?", fb:"Objection traitée par un service rendu et une proposition de rendez-vous avec alternative.", rep:"Lundi 14 h, avec votre CV."},
+     {q:"meh", t:"Je peux apprendre vite, vous savez.", fb:"Bonne intention, mais sans preuve ni demande de rendez-vous.", rep:"Peut-être. Passez lundi à 14 h avec un CV."},
+     {q:"bad", t:"Ah, si c’est technique, laissez tomber.", fb:"Abandon face à l’objection.", rep:"Comme vous voulez… Enfin, passez lundi 14 h si vous changez d’avis."}]},
+   {ph:"F", them:null, opts:[
+     {q:"good", t:"Merci Monsieur Ferreira. Lundi à 14 h à la concession Nord Auto de Villepinte, avec mon CV et ma convention. Excellente journée !", fb:"Récapitulatif précis et remerciements.", rep:"À lundi."},
+     {q:"meh", t:"D’accord, merci.", fb:"Sans reformulation, l’engagement est fragile.", rep:"Au revoir."},
+     {q:"bad", t:"Ouais, on verra.", fb:"Tu n’engages rien : le rendez-vous est perdu.", rep:"…"}]}
+  ]},
+ {id:"interim", lieu:"Roissy-en-France", nom:"Mme Roux", boutique:"Proxi Intérim (agence de travail temporaire)", intro:"Tu appelles une agence d’intérim de la zone aéroportuaire. Ses chargés d’affaires prospectent les entreprises par téléphone pour placer des intérimaires.",
+  steps:[
+   {ph:"C", them:"Proxi Intérim Roissy, Mme Roux, j’écoute.", opts:[
+     {q:"good", t:"Bonjour Madame Roux, je suis Kenza Haddad, élève en Première Bac Pro Métiers du commerce et de la vente, option prospection. Êtes-vous bien la responsable de l’agence ?", fb:"Présentation complète et vérification de l’interlocuteur.", rep:"Oui. Je n’ai pas beaucoup de temps, on a des urgences de recrutement."},
+     {q:"meh", t:"Bonjour, c’est Kenza.", fb:"Présentation incomplète : Kenza qui ? pour quoi ?", rep:"Kenza ? Je ne vois pas. Je suis pressée."},
+     {q:"bad", t:"Allô, vous avez du travail pour moi ?", fb:"Tu confonds candidature à une mission d’intérim et demande de stage.", rep:"Pour une inscription, il faut passer à l’agence… Que voulez-vous exactement ?"}]},
+   {ph:"R", them:null, opts:[
+     {q:"good", t:"Je serai brève. Je cherche une entreprise d’accueil pour 4 semaines en mars, et le métier de chargé d’affaires m’intéresse : prospecter les entreprises par téléphone et prendre des rendez-vous.", fb:"Brièveté adaptée à une interlocutrice pressée, raison et motivation précises.", rep:"Le phoning, ça demande du répondant. Les entreprises raccrochent souvent."},
+     {q:"meh", t:"C’est pour un stage, n’importe quoi m’ira.", fb:"Tu ne montres aucun intérêt pour le métier de l’agence.", rep:"N’importe quoi ? Ici on fait surtout du phoning, et les entreprises raccrochent souvent."},
+     {q:"bad", t:"Il faudrait que je vous explique toute ma situation, ça va prendre un moment…", fb:"Tu fais fuir une interlocutrice pressée.", rep:"Je n’ai pas le temps. Ici on fait du phoning, c’est dur, les gens raccrochent."}]},
+   {ph:"O", them:null, opts:[
+     {q:"good", t:"C’est exactement ce que je travaille en cours : plan d’appel, accroche, traitement des objections. Je peux commencer par la mise à jour de votre fichier entreprises. Puis-je vous rencontrer jeudi à 9 h ou vendredi à 14 h ?", fb:"Objection traitée par une preuve de compétence, puis rendez-vous avec alternative.", rep:"Vendredi 14 h. Apportez votre CV."},
+     {q:"meh", t:"Je pense que je m’en sortirai.", fb:"Rassurant, mais sans preuve ni demande de rendez-vous.", rep:"On verra. Passez vendredi 14 h avec un CV."},
+     {q:"bad", t:"Ah, si les gens raccrochent, ça ne m’intéresse plus.", fb:"Abandon face à l’objection : c’est pourtant le cœur du métier.", rep:"Dommage… Si vous changez d’avis, vendredi 14 h."}]},
+   {ph:"F", them:null, opts:[
+     {q:"good", t:"Merci Madame Roux. Je récapitule : vendredi à 14 h à l’agence Proxi Intérim de Roissy, avec mon CV et ma convention de stage. Bonne journée !", fb:"Reformulation précise et prise de congé.", rep:"À vendredi."},
+     {q:"meh", t:"D’accord, à vendredi.", fb:"Il manque la reformulation de l’heure et des documents.", rep:"Au revoir."},
+     {q:"bad", t:"Ouais, si j’y pense.", fb:"Aucun engagement : le rendez-vous est perdu.", rep:"…"}]}
+  ]}
+];
+const DELTA = {good:6, meh:-15, bad:-32, timeout:-22};
+setTimeout(() => { const s = CALLS.find(c => c.id === "assur"); if (s) s.barrage = {g:"f", n:2}; });
+let CALL = null;
+function pfmpHome(){
+  $("#pfmp-root").innerHTML = `<div style="display:grid;gap:8px"><p class="eyebrow">Module 1 · Méthode CROC</p><h1 class="h1">Simulateur « Objectif PFMP »</h1>
+   <p class="lede">Tu appelles le décideur d’une entreprise qui prospecte (immobilier, assurance, automobile, intérim) pour trouver ton stage. À chaque réplique, choisis la meilleure réponse en moins de <b>20 secondes</b>. Chaque maladresse fait baisser sa <b>patience</b> : à zéro, il raccroche. À côté, la méthode CROC et les 4 étapes du programme : entame, disponibilité, accroche, objet.</p></div>
+   <div class="pickers">${CALLS.map(c => `<button class="picker" data-call="${c.id}"><p class="eyebrow">${esc(c.lieu)}</p><h3>${esc(c.boutique)}</h3><p>${esc(c.intro)}</p><span class="mod-best">${S.best["call_"+c.id] ? "Meilleur score : " + S.best["call_"+c.id] + "/20" : "Jamais joué"}</span></button>`).join("")}</div>`;
+  $("#pfmp-root").onclick = e => { const b = e.target.closest("[data-call]"); if (b) startCall(b.dataset.call); };
+}
+function startCall(id){
+  const sc = CALLS.find(c => c.id === id); CALL = {sc, i:0, pat:100, log:[], timer:null, utter:0, zen:S.cfg.zen}; markZen();
+  $("#pfmp-root").innerHTML = `<div class="row"><button class="btn ghost sm" id="call-back">← Choisir un autre appel</button></div>
+   <div class="split"><div class="phone"><div class="top-call"><div class="who"><b>${esc(sc.nom)}</b><span>${esc(sc.boutique)} · ${esc(sc.lieu)}</span></div>
+     <div class="gauge"><span>Patience du décideur</span><div class="g"><i id="pat"></i></div></div></div>
+     <div class="chat" id="chat" aria-live="polite"><div class="msg sys">📞 Appel en cours…</div></div>
+     <div class="countdown"><i id="cd"></i></div><div class="choices" id="choices"></div></div>
+   <div class="croc" id="croc">${Object.entries(PH).map(([k,v]) => `<div data-ph="${k}"><b>${v.charAt(0)} · ${v}</b><br>${({C:"<i>Entame</i> : saluer, se présenter, vérifier l’interlocuteur. <i>Disponibilité</i> : vérifier qu’il peut t’écouter.",R:"<i>Accroche et objet</i> : dire pourquoi tu appelles et ce que l’entreprise y gagne.",O:"Obtenir un RDV ou un accord, traiter les objections.",F:"Reformuler, remercier, prendre congé."})[k]}</div>`).join("")}</div></div>`;
+  $("#call-back").onclick = () => { clearInterval(CALL?.timer); hush(); CALL = null; pfmpHome(); };
+  sayThem(sc.steps[0].them); askStep();
+}
+function sayThem(t){ if (!t) return; const c = $("#chat"); const d = document.createElement("div"); d.className = "msg them";
+  const sc = CALL.sc; CALL.utter = (CALL.utter || 0); const g = sc.barrage && CALL.utter < sc.barrage.n ? sc.barrage.g : (sc.nom.startsWith("Mme") ? "f" : "m"); CALL.utter++;
+  const p = Math.max(0, CALL.pat); const mood = p > 60 ? 0 : p > 30 ? 1 : 2;
+  d.textContent = t; if (TTS) { const r = document.createElement("button"); r.className = "replay"; r.type = "button"; r.textContent = "🔊"; r.setAttribute("aria-label", "Réécouter"); r.onclick = () => speak(t, {g, mood, force:true}); d.appendChild(r); }
+  c.appendChild(d); c.scrollTop = c.scrollHeight; speak(t, {g, mood}); }
+function drawPat(){ const p = Math.max(0, CALL.pat); const i = $("#pat"); i.style.width = p + "%"; i.style.background = p > 60 ? "#4ade80" : p > 30 ? "#ffd166" : "#ff6b5f"; }
+function askStep(){
+  const st = CALL.sc.steps[CALL.i]; drawPat();
+  $$("#croc [data-ph]").forEach(d => d.classList.toggle("now", d.dataset.ph === st.ph));
+  const opts = shuffle(st.opts);
+  $("#choices").innerHTML = opts.map((o,k) => `<div class="choice-row"><button data-k="${k}">${esc(o.t)}</button>${sayBtn(o.t)}</div>`).join("");
+  $("#choices").onclick = e => { const b = e.target.closest("[data-k]"); if (b) choose(opts[+b.dataset.k]); };
+  clearInterval(CALL.timer); const zf = zenFactor(); $(".countdown").hidden = zf === 0; if (zf === 0) return;
+  const T = 20000 * zf, t0 = Date.now();
+  CALL.timer = setInterval(() => { const left = Math.max(0, T - (Date.now() - t0)); $("#cd").style.width = (left / T * 100) + "%"; if (left <= 0) { clearInterval(CALL.timer); choose(null); } }, 100);
+}
+function choose(o){
+  clearInterval(CALL.timer); hush(); const st = CALL.sc.steps[CALL.i]; const q = o ? o.q : "timeout";
+  CALL.pat = Math.min(100, CALL.pat + DELTA[q]); CALL.log.push({st, o, q});
+  const c = $("#chat"); const d = document.createElement("div"); d.className = "msg me";
+  d.innerHTML = o ? `${esc(o.t)}<span class="fb ${q}">${q==="good"?"✓":q==="meh"?"~":"✗"} ${esc(o.fb)}</span>` : `<i>(silence…)</i><span class="fb bad">✗ Trop long : au téléphone, un silence met mal à l’aise.</span>`;
+  c.appendChild(d); c.scrollTop = c.scrollHeight; drawPat(); $("#choices").innerHTML = "";
+  setTimeout(() => {
+    if (CALL.pat <= 0) { sayThem("Écoutez, je n’ai pas le temps. Au revoir."); const s = document.createElement("div"); s.className = "msg sys"; s.textContent = "📵 Le décideur a raccroché."; c.appendChild(s); return setTimeout(() => endCall(false), 1200); }
+    const rep = o ? o.rep : (st.opts.find(x => x.q === "meh") || st.opts[0]).rep; sayThem(rep);
+    CALL.i++; if (CALL.i >= CALL.sc.steps.length) return setTimeout(() => endCall(true), 900); askStep();
+  }, 900);
+}
+function endCall(done){
+  const L = CALL.log, n = CALL.sc.steps.length; const pts = L.reduce((a,x) => a + (x.q==="good" ? 1 : x.q==="meh" ? .4 : 0), 0);
+  const note = Math.round((done ? pts / n * 18 + CALL.pat / 100 * 2 : pts / n * 10) * 10) / 10;
+  const rec = best("call_" + CALL.sc.id, note); best("pfmp", note); addXp(note * 10);
+  if (done && CALL.pat > 50) badge("appel"); if (done && L.every(x => x.q === "good")) badge("appelpro");
+  const byPh = Object.keys(PH).map(k => { const xs = L.filter(x => x.st.ph === k); if (!xs.length) return ""; const g = xs.filter(x => x.q === "good").length; return `<span class="chip" aria-pressed="false">${PH[k]} : ${g}/${xs.length}</span>`; }).join("");
+  $("#pfmp-root").innerHTML = `<div class="row"><button class="btn ghost sm" id="call-back">← Autres appels</button></div>
+   <div class="bilan"><p class="eyebrow">Débriefing de l’appel · ${esc(CALL.sc.boutique)}</p>
+    <h2 class="h2">${CALL.zen !== "normal" ? `<span class="zen-tag">Mode Zen</span> ` : ""}${done ? (CALL.pat > 50 ? "Rendez-vous obtenu ✓" : "Rendez-vous obtenu de justesse") : "Le décideur a raccroché ✗"} — <span class="mono">${fmt(note,1)} / 20</span>${rec ? ` <span class="hand">record !</span>` : ""}</h2>
+    <div class="chips">${byPh}</div><div class="row"><button class="btn primary" id="retry">Rejouer cet appel</button></div></div>
+   <div class="panel debrief"><h3 class="h2" style="font-size:1.1rem">Réplique par réplique</h3>${L.map((x,i) => { const g = x.st.opts.find(o => o.q === "good");
+     return `<div class="step-rev"><span><b>${i+1}. ${PH[x.st.ph]}</b> <span class="qtag ${x.q==="timeout"?"bad":x.q}">${x.q==="good"?"Très bien":x.q==="meh"?"Moyen":x.q==="bad"?"À éviter":"Temps écoulé"}</span></span>${x.o ? `<span>Ta réponse : « ${esc(x.o.t)} »</span><span class="muted">${esc(x.o.fb)}</span>` : ""}${x.q !== "good" ? `<span class="model">Réponse modèle : « ${esc(g.t)} »</span>` : ""}</div>`; }).join("")}</div>`;
+  $("#call-back").onclick = () => { CALL = null; pfmpHome(); }; $("#retry").onclick = () => startCall(CALL.sc.id);
+}
+
+/* =====================================================================
+   2. CIBLAGE EXPRESS — swipe + OCA + RGPD
+   ===================================================================== */
+const CAMPS = [
+ {id:"interim", titre:"Agence d’intérim · prospection d’entreprises (B2B)", ctx:"L’agence Proxi Intérim de Roissy veut proposer ses intérimaires aux entreprises de la zone aéroportuaire.",
+  cible:["Entreprise à 20 km maximum de Roissy","50 salariés ou plus","Fait appel à l’intérim ou a des pics d’activité","Fiche exploitable : un décideur joignable, aucune donnée sensible"],
+  cards:[
+   {t:"Logistik Nord", f:[["Ville","Tremblay-en-France · 6 km"],["Effectif","120 salariés"],["Intérim","Oui, pics à Noël"],["Contact","M. Petit, DRH · 01 48 xx xx xx"]], a:"in", w:"O : 6 km, 120 salariés, pics d’activité. A : tous les critères sont remplis."},
+   {t:"Cabinet d’avocats Mercier", f:[["Ville","Paris 8e · 30 km"],["Effectif","9 salariés"],["Intérim","Non"],["Contact","Me Mercier · contact@mercier-avocats.fr"]], a:"out", w:"O : 30 km et 9 salariés. A : hors cible (distance et taille)."},
+   {t:"Hôtel Aéro Suites", f:[["Ville","Roissy-en-France · 2 km"],["Effectif","2 équipes de 35 salariés"],["Intérim","Oui, saison estivale"],["Contact","Mme Kaci, directrice · 01 49 xx xx xx"]], a:"in", w:"C : 2 × 35 = 70 salariés. A : cible."},
+   {t:"Garage Dupuis", f:[["Ville","Villepinte · 9 km"],["Effectif","12 salariés"],["Intérim","Non"],["Contact","M. Dupuis · 06 xx xx xx xx"]], a:"out", w:"O : 12 salariés, pas d’intérim. A : hors cible malgré la proximité."},
+   {t:"Expo Services", f:[["Ville","Villepinte · 9 km"],["Effectif","85 salariés"],["Intérim","Oui, pendant les salons"],["Contact","Nom inconnu · ni téléphone ni e-mail"]], a:"rgpd", w:"O : bonne cible mais aucun moyen de contact. A : fiche incomplète, à qualifier avant de prospecter."},
+   {t:"Air Catering Services", f:[["Ville","Roissy-en-France · 3 km"],["Effectif","60 salariés"],["Intérim","Oui"],["Contact","Mme Roy, DRH · 01 43 xx xx xx"],["Note","Religion de la DRH : musulmane"]], a:"rgpd", w:"O : donnée sensible (religion). A : interdit par le RGPD, la fiche doit être nettoyée avant tout usage."},
+   {t:"TechCargo", f:[["Ville","Gonesse · 9 km"],["Effectif","45 salariés"],["Intérim","Oui"],["Contact","M. Klein, gérant · 01 39 xx xx xx"]], a:"out", w:"O : 45 salariés. A : sous le seuil de 50, hors cible."},
+   {t:"Clinique Les Tilleuls", f:[["Ville","Le Blanc-Mesnil · 12 km"],["Effectif","150 salariés"],["Intérim","Oui, remplacements"],["Contact","M. Martin, directeur · 01 45 xx xx xx"],["Note","Le directeur a été opéré du cœur"]], a:"rgpd", w:"O : donnée de santé. A : donnée sensible interdite, fiche à rejeter et à nettoyer."},
+   {t:"Paris Nord Events", f:[["Ville","Villepinte · 9 km"],["Effectif","55 salariés"],["Intérim","Oui, montage des salons"],["Contact","M. Haddad, directeur des opérations · contact@pnevents.fr"]], a:"in", w:"O : 9 km, 55 salariés, besoins pendant les salons. A : cible."},
+   {t:"Start-up Pixel", f:[["Ville","Montreuil · 25 km"],["Effectif","52 salariés"],["Intérim","Non, télétravail total"],["Contact","Mme Lin · lin@pixel.io"]], a:"out", w:"O : 25 km et pas de recours à l’intérim. A : hors cible."},
+   {t:"Cargo Air Fret", f:[["Ville","Roissy · 4 km"],["Effectif","3 sites de 20 salariés"],["Intérim","Oui"],["Contact","M. Diaz, responsable RH · 01 48 xx xx xx"]], a:"in", w:"C : 3 × 20 = 60 salariés. A : cible."},
+   {t:"Imprimerie Lemoine", f:[["Ville","Sarcelles · 15 km"],["Effectif","80 salariés"],["Intérim","Oui"],["Contact","M. Lemoine · 01 39 xx xx xx"],["Note","Origine ethnique du gérant : …"]], a:"rgpd", w:"O : origine ethnique = donnée sensible. A : rejet RGPD."}
+  ]},
+ {id:"immo", titre:"Agence immobilière · campagne SMS propriétaires (B2C)", ctx:"L’agence Nord Habitat d’Aulnay-sous-Bois propose une estimation gratuite aux propriétaires susceptibles de vendre. Nous sommes en 2026.",
+  cible:["Propriétaire de son logement","Bien acheté il y a 5 ans ou plus (en 2021 ou avant)","Logement à 10 km maximum de l’agence","A accepté d’être contacté par SMS, mobile renseigné, aucune donnée sensible"],
+  cards:[
+   {t:"Mme Kaci", f:[["Statut","Propriétaire"],["Achat du bien","2012"],["Ville","Sevran · 5 km"],["Accord SMS","Oui · 06 xx xx xx xx"]], a:"in", w:"C : 2026 − 2012 = 14 ans de détention. A : cible."},
+   {t:"M. Laurent", f:[["Statut","Locataire"],["Emménagement","2018"],["Ville","Aulnay-sous-Bois · 0 km"],["Accord SMS","Oui · 07 xx xx xx xx"]], a:"out", w:"O : locataire, il ne peut pas vendre. A : hors cible."},
+   {t:"Mme Nguyen", f:[["Statut","Propriétaire"],["Achat du bien","2015"],["Ville","Livry-Gargan · 4 km"],["Accord SMS","Non"]], a:"rgpd", w:"O : pas d’accord SMS. A : interdit de lui envoyer le SMS (RGPD)."},
+   {t:"M. Bernard", f:[["Statut","Propriétaire"],["Achat du bien","2005"],["Ville","Paris 15e · 25 km"],["Accord SMS","Oui · 06 xx xx xx xx"]], a:"out", w:"O : 25 km. A : hors du secteur de l’agence."},
+   {t:"Mme Diop", f:[["Statut","Propriétaire"],["Achat du bien","2021"],["Ville","Villepinte · 6 km"],["Accord SMS","Oui · 07 xx xx xx xx"]], a:"in", w:"C : 2026 − 2021 = 5 ans pile. A : cible."},
+   {t:"M. Rossi", f:[["Statut","Propriétaire"],["Achat du bien","2009"],["Ville","Aulnay-sous-Bois · 0 km"],["Accord SMS","Oui · 06 xx xx xx xx"],["Note","Opinion politique : militant actif"]], a:"rgpd", w:"O : opinion politique = donnée sensible. A : rejet RGPD."},
+   {t:"Mme Petit", f:[["Statut","Propriétaire"],["Achat du bien","2010"],["Ville","Le Blanc-Mesnil · 4 km"],["Accord SMS","Oui · mobile non renseigné"]], a:"rgpd", w:"O : pas de numéro. A : fiche incomplète, SMS impossible."},
+   {t:"M. Haddad", f:[["Statut","Propriétaire"],["Achat du bien","2023"],["Ville","Sevran · 5 km"],["Accord SMS","Oui · 06 xx xx xx xx"]], a:"out", w:"C : 3 ans de détention seulement. A : peu susceptible de vendre, hors cible."},
+   {t:"Mme Leroy", f:[["Statut","Propriétaire"],["Achat du bien","1998"],["Ville","Drancy · 7 km"],["Accord SMS","Oui · 06 xx xx xx xx"]], a:"in", w:"C : 28 ans de détention, 7 km. A : cible."},
+   {t:"M. Costa", f:[["Statut","Propriétaire"],["Achat du bien","2016"],["Ville","Bondy · 8 km"],["Accord SMS","Oui · 07 xx xx xx xx"]], a:"in", w:"C : 10 ans, 8 km. A : cible."},
+   {t:"Mme Martin", f:[["Statut","Propriétaire"],["Achat du bien","2001"],["Ville","Chelles · 14 km"],["Accord SMS","Oui · 06 xx xx xx xx"]], a:"out", w:"O : 14 km. A : hors du secteur."},
+   {t:"M. Benali", f:[["Statut","Propriétaire"],["Achat du bien","2008"],["Ville","Sevran · 5 km"],["Accord SMS","Oui · 06 xx xx xx xx"],["Note","N° de sécurité sociale : 1 68 …"]], a:"rgpd", w:"O : n° de sécurité sociale inutile et sensible. A : rejet RGPD."}
+  ]}
+];
+const ANS = {in:"✓ Retenir", out:"✕ Écarter", rgpd:"🛡 Rejeter (RGPD / incomplète)"};
+let CB = null;
+function cibHome(){
+  $("#cib-root").innerHTML = `<div style="display:grid;gap:8px"><p class="eyebrow">Module 2 · Méthode OCA</p><h1 class="h1">Ciblage express</h1>
+   <p class="lede">Lis la cible, puis décide pour chaque fiche : <b>glisse à droite</b> pour la retenir, <b>à gauche</b> pour l’écarter, <b>vers le haut</b> pour la rejeter (donnée sensible ou fiche incomplète). Au clavier : ← ↑ →. Observe, calcule ce qui manque, adapte ta décision.</p></div>
+   <div class="pickers">${CAMPS.map(c => `<button class="picker" data-camp="${c.id}"><p class="eyebrow">${c.cards.length} fiches</p><h3>${esc(c.titre)}</h3><p>${esc(c.ctx)}</p><span class="mod-best">${S.best["camp_"+c.id] ? "Meilleur score : " + S.best["camp_"+c.id] + " %" : "Jamais joué"}</span></button>`).join("")}</div>`;
+  $("#cib-root").onclick = e => { const b = e.target.closest("[data-camp]"); if (b) startCamp(b.dataset.camp); };
+}
+function startCamp(id){
+  const c = CAMPS.find(x => x.id === id); CB = {c, deck:shuffle(c.cards), i:0, ok:0, errs:[], t0:Date.now(), lock:false};
+  $("#cib-root").innerHTML = `<div class="row"><button class="btn ghost sm" id="cb-back">← Campagnes</button><span class="muted mono" id="cb-prog"></span></div>
+   <div class="split"><div style="display:grid;gap:12px;min-width:0"><div class="deck" id="deck"></div>
+     <div class="swipe-btns"><button class="btn" data-a="out">✕ Écarter</button><button class="btn" data-a="rgpd">🛡 Rejeter</button><button class="btn primary" data-a="in">✓ Retenir</button></div>
+     <div id="verdict" aria-live="polite"></div></div>
+   <div class="brief"><b>Cible de la campagne</b><span>${esc(c.ctx)}</span><ul style="margin:0;padding-left:1.1em">${c.cible.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div></div>`;
+  $("#cb-back").onclick = () => { CB = null; cibHome(); };
+  $("#cib-root").onclick = e => { const b = e.target.closest("[data-a]"); if (b) decide(b.dataset.a); };
+  drawCard();
+}
+function drawCard(){
+  const x = CB.deck[CB.i]; $("#cb-prog").textContent = `Fiche ${CB.i+1} / ${CB.deck.length} · ${CB.ok} bonne(s) décision(s)`;
+  const d = $("#deck"); d.innerHTML = `<div class="pcard" id="pc"><span class="stamp" id="stamp"></span><p class="eyebrow">Fiche prospect</p><h3>${esc(x.t)}</h3><dl>${x.f.map(([k,v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl></div>`;
+  CB.lock = false; bindSwipe($("#pc"));
+}
+function bindSwipe(el){
+  let sx = 0, sy = 0, dx = 0, dy = 0, on = false;
+  el.addEventListener("pointerdown", e => { on = true; sx = e.clientX; sy = e.clientY; el.classList.add("drag"); el.setPointerCapture(e.pointerId); });
+  el.addEventListener("pointermove", e => { if (!on) return; dx = e.clientX - sx; dy = e.clientY - sy; el.style.transform = `translate(${dx}px,${Math.min(0,dy)}px) rotate(${dx/18}deg)`;
+    const st = $("#stamp"); const a = dy < -70 && Math.abs(dy) > Math.abs(dx) ? "rgpd" : dx > 60 ? "in" : dx < -60 ? "out" : null;
+    st.style.opacity = a ? 1 : 0; if (a) { st.textContent = a==="in" ? "RETENIR" : a==="out" ? "ÉCARTER" : "REJETER"; st.style.color = st.style.borderColor = a==="in" ? "var(--ok)" : a==="out" ? "var(--ink-2)" : "var(--red)"; st.style.left = a==="out" ? "auto" : "16px"; st.style.right = a==="out" ? "16px" : "auto"; } });
+  const end = () => { if (!on) return; on = false; el.classList.remove("drag"); const a = dy < -90 && Math.abs(dy) > Math.abs(dx) ? "rgpd" : dx > 90 ? "in" : dx < -90 ? "out" : null;
+    if (a) decide(a); else { el.style.transform = ""; $("#stamp").style.opacity = 0; } dx = dy = 0; };
+  el.addEventListener("pointerup", end); el.addEventListener("pointercancel", end);
+}
+document.addEventListener("keydown", e => { if (!CB || $("section[data-view='ciblage']").hidden || CB.lock) return; const m = {ArrowRight:"in", ArrowLeft:"out", ArrowUp:"rgpd"}[e.key]; if (m) { e.preventDefault(); decide(m); } });
+function decide(a){
+  if (!CB || CB.lock || CB.i >= CB.deck.length) return; CB.lock = true; const x = CB.deck[CB.i]; const ok = a === x.a; if (ok) CB.ok++; else CB.errs.push({x, a});
+  const el = $("#pc"); if (el) { el.style.transform = a==="in" ? "translate(140%,0) rotate(18deg)" : a==="out" ? "translate(-140%,0) rotate(-18deg)" : "translate(0,-120%)"; el.style.opacity = .2; }
+  $("#verdict").innerHTML = `<div class="verdict ${ok?"ok":"ko"}"><b>${ok ? "✓ Bonne décision" : `✕ Il fallait : ${ANS[x.a]}`}</b><span>${esc(x.w)}</span></div>`;
+  const go = () => { CB.i++; if (CB.i >= CB.deck.length) endCamp(); else drawCard(); };
+  if (S.cfg.zen !== "normal") { markZen(); const v = $("#verdict .verdict"); const b = document.createElement("button"); b.className = "btn primary sm"; b.style.justifySelf = "start"; b.textContent = CB.i + 1 >= CB.deck.length ? "Voir le bilan →" : "Fiche suivante →"; b.onclick = go; v.appendChild(b); b.focus({preventScroll:true}); }
+  else setTimeout(go, ok ? 1100 : 2600);
+}
+function endCamp(){
+  const n = CB.deck.length, pc = Math.round(CB.ok / n * 100), sec = Math.round((Date.now() - CB.t0) / 1000);
+  const rec = best("camp_" + CB.c.id, pc); best("ciblage", pc); addXp(pc * 2);
+  if (pc >= 90) badge("cible"); if (!CB.errs.some(e => e.x.a === "rgpd")) badge("rgpd");
+  $("#cib-root").innerHTML = `<div class="row"><button class="btn ghost sm" id="cb-back">← Campagnes</button></div>
+   <div class="bilan"><p class="eyebrow">Bilan · ${esc(CB.c.titre)}</p><h2 class="h2">${CB.ok} / ${n} bonnes décisions — <span class="mono">${pc} %</span> en ${sec} s${rec ? ` <span class="hand">record !</span>` : ""}</h2>
+   <div class="row"><button class="btn primary" id="cb-retry">Rejouer</button></div></div>
+   ${CB.errs.length ? `<div class="panel"><h3 class="h2" style="font-size:1.1rem">Tes erreurs</h3>${CB.errs.map(e => `<div class="step-rev"><b>${esc(e.x.t)}</b><span>Ton choix : ${ANS[e.a]} · attendu : <b>${ANS[e.x.a]}</b></span><span class="muted">${esc(e.x.w)}</span></div>`).join("")}</div>` : `<div class="panel"><b style="color:var(--ok)">Sans faute !</b></div>`}`;
+  const id = CB.c.id; $("#cb-back").onclick = () => { CB = null; cibHome(); }; $("#cb-retry").onclick = () => startCamp(id);
+}
+
+/* =====================================================================
+   3. ARGUMENTAIRE SONCAS — glisser-déposer (ou toucher puis toucher)
+   ===================================================================== */
+const ARGSETS = [
+ {id:"habitation", titre:"Assurance habitation · conseiller en agence d’assurance (B2C)", pairs:[
+  ["J’ai peur d’un dégât des eaux pendant mes vacances.","Sécurité","Assistance 24 h/24 et plombier envoyé sous 3 h : votre logement est protégé même en votre absence. Le numéro d’urgence figure sur votre carte d’assuré."],
+  ["Je n’ai pas le temps de remplir des papiers.","Confort","Souscription et déclaration de sinistre en ligne en 5 minutes : aucune paperasse. Je vous montre l’application."],
+  ["Je paie déjà trop cher chez mon assureur actuel.","Argent","Formule dès 9 € par mois et résiliation de votre ancien contrat prise en charge par nos soins : vous économisez sans démarche. Devis comparatif immédiat."],
+  ["Je veux une assurance moderne, avec des objets connectés.","Nouveauté","Détecteur de fuite connecté offert : une alerte arrive sur votre téléphone au moindre problème. Offre lancée ce mois-ci."],
+  ["J’ai des objets de valeur, je veux la meilleure protection.","Orgueil","Formule Premium avec garantie objets de valeur jusqu’à 30 000 € : la protection réservée à nos clients les plus exigeants. Attestation nominative."],
+  ["Je préfère un conseiller que je peux rencontrer en vrai.","Sympathie","Je reste votre conseiller attitré à l’agence de Sevran, à 5 minutes de chez vous. Voici ma carte et ma ligne directe."],
+  ["Je viens de faire des travaux pour isoler ma maison.","Environnement","Bonus éco-rénovation : −10 % sur la cotisation des logements rénovés : vos efforts sont récompensés. Le barème est écrit dans la proposition."]]},
+ {id:"caisse", titre:"Logiciel de caisse · commerçants de Sevran (B2B)", pairs:[
+  ["Si ma caisse tombe en panne un samedi, je perds ma journée.","Sécurité","Assistance 7 j/7 et caisse de secours livrée sous 24 h : votre activité ne s’arrête jamais. C’est écrit dans le contrat de service."],
+  ["Je n’ai pas le temps d’apprendre un logiciel compliqué.","Confort","Interface tactile en 3 clics et formation sur place : vous êtes opérationnel en une matinée. Démonstration gratuite."],
+  ["Combien ça va me coûter chaque mois ?","Argent","Abonnement à 29 € HT par mois, sans engagement : aucun gros investissement. Devis gratuit et détaillé."],
+  ["Je veux du paiement sans contact et du click & collect.","Nouveauté","Paiement mobile et commande en ligne intégrés : vous proposez les services les plus récents. Mise à jour automatique."],
+  ["Je veux que ma boutique ait une image plus moderne que celle d’en face.","Orgueil","Écran client et tickets à votre logo : votre commerce affiche une image premium. Voici des photos de boutiques équipées."],
+  ["Je préfère travailler avec quelqu’un du coin que je connais.","Sympathie","Votre commerciale attitrée est basée à Villepinte et passe vous voir chaque trimestre. Plusieurs commerçants de Sevran peuvent en témoigner."],
+  ["Je veux arrêter d’imprimer tous ces tickets papier.","Environnement","Ticket envoyé par SMS ou e-mail : zéro papier et des clients qui gardent leurs preuves d’achat. Option activée gratuitement."]]}
+];
+let AG = null;
+function arguHome(){
+  $("#argu-root").innerHTML = `<div style="display:grid;gap:8px"><p class="eyebrow">Module 3 · SONCASE et CAP</p><h1 class="h1">Le parfait argumentaire</h1>
+   <p class="lede">À gauche, ce que disent les clients. À droite, des arguments construits en CAP. <b>Glisse</b> chaque argument sur le client qu’il convainc (ou touche l’argument puis la case du client). Une erreur est expliquée sur le moment.</p></div>
+   <div class="pickers">${ARGSETS.map(a => `<button class="picker" data-set="${a.id}"><p class="eyebrow">${a.pairs.length} clients</p><h3>${esc(a.titre)}</h3><span class="mod-best">${S.best["argu_"+a.id] ? "Meilleur score : " + S.best["argu_"+a.id] + " %" : "Jamais joué"}</span></button>`).join("")}</div>`;
+  $("#argu-root").onclick = e => { const b = e.target.closest("[data-set]"); if (b) startArgu(b.dataset.set); };
+}
+function startArgu(id){
+  const set = ARGSETS.find(a => a.id === id); AG = {set, done:{}, tries:0, errors:0, sel:null};
+  const verbs = shuffle(set.pairs.map((p,i) => ({...p, i}))), args = shuffle(set.pairs.map((p,i) => ({...p, i})));
+  $("#argu-root").innerHTML = `<div class="row"><button class="btn ghost sm" id="ag-back">← Choisir un produit</button><span class="muted mono" id="ag-prog"></span></div>
+   <h2 class="h2">${esc(set.titre)}</h2>
+   <div class="dnd"><div class="verbs-col">${verbs.map(v => `<div class="slot" data-v="${v.i}"><span class="v">« ${esc(v[0])} »</span><div class="drop">Dépose l’argument ici</div><div data-b hidden></div></div>`).join("")}</div>
+   <div class="args-col">${args.map(a => `<button class="arg" draggable="true" data-a="${a.i}">${esc(a[2])}</button>`).join("")}</div></div>`;
+  $("#ag-back").onclick = () => { AG = null; arguHome(); };
+  const root = $("#argu-root");
+  root.onclick = e => { const a = e.target.closest(".arg"); if (a) { $$(".arg", root).forEach(x => x.classList.remove("sel")); AG.sel = +a.dataset.a; a.classList.add("sel"); return; }
+    const s = e.target.closest(".slot"); if (s && AG.sel !== null) drop(+AG.sel, s); };
+  root.ondragstart = e => { const a = e.target.closest(".arg"); if (a) e.dataTransfer.setData("text/plain", a.dataset.a); };
+  root.ondragover = e => { const s = e.target.closest(".slot"); if (s && !s.classList.contains("good")) { e.preventDefault(); s.classList.add("over"); } };
+  root.ondragleave = e => { const s = e.target.closest(".slot"); if (s) s.classList.remove("over"); };
+  root.ondrop = e => { const s = e.target.closest(".slot"); if (!s) return; e.preventDefault(); s.classList.remove("over"); drop(+e.dataTransfer.getData("text/plain"), s); };
+  progArgu();
+}
+function drop(ai, slot){
+  if (slot.classList.contains("good") || AG.done[ai]) return; const vi = +slot.dataset.v; const P = AG.set.pairs; AG.tries++;
+  const b = $("[data-b]", slot);
+  if (ai === vi) { AG.done[ai] = true; slot.classList.remove("bad"); slot.classList.add("good"); $(".drop", slot).textContent = P[ai][2]; b.hidden = false; b.className = ""; b.innerHTML = `<span class="qtag good">${esc(P[ai][1])}</span>`; $(`.arg[data-a="${ai}"]`).classList.add("used"); }
+  else { AG.errors++; slot.classList.add("bad"); b.hidden = false; b.className = "bulle"; b.textContent = `Attention : cet argument vise ${P[ai][1].toLowerCase() === "environnement" ? "l’" : "le mobile "}${P[ai][1]}, alors que le client exprime un besoin de ${P[vi][1]}.`; setTimeout(() => { if (!slot.classList.contains("good")) { slot.classList.remove("bad"); b.hidden = true; } }, 3200); }
+  $$(".arg").forEach(x => x.classList.remove("sel")); AG.sel = null; progArgu();
+  if (Object.keys(AG.done).length === P.length) endArgu();
+}
+function progArgu(){ $("#ag-prog").textContent = `${Object.keys(AG.done).length} / ${AG.set.pairs.length} associés · ${AG.errors} erreur(s)`; }
+function endArgu(){
+  const n = AG.set.pairs.length, pc = Math.round(n / (n + AG.errors) * 100); const rec = best("argu_" + AG.set.id, pc); best("argu", pc); addXp(pc * 1.5); if (!AG.errors) badge("argu");
+  const box = document.createElement("div"); box.className = "bilan"; box.innerHTML = `<p class="eyebrow">Argumentaire terminé</p><h2 class="h2">Précision : <span class="mono">${pc} %</span> (${AG.errors} erreur${AG.errors>1?"s":""})${rec ? ` <span class="hand">record !</span>` : ""}</h2><p class="muted">Relis chaque argument : il suit toujours la structure CAP, Caractéristique → Avantage → Preuve.</p><div class="row"><button class="btn primary" id="ag-retry">Rejouer</button></div>`;
+  $("#argu-root").appendChild(box); const id = AG.set.id; $("#ag-retry").onclick = () => startArgu(id); box.scrollIntoView({behavior:"smooth"});
+}
+
+/* =====================================================================
+   4. FLASH-CALCUL — mode survie
+   ===================================================================== */
+const CALC = [
+ {n:"Prix TTC", f(){ const ht = rnd(5,400) + pick([0,.5,.9,.99]); const t = pick([20,20,20,10,5.5]); const a = r2(ht*(1+t/100)); return {q:`Une prestation est facturée ${fmt(ht)} € HT. TVA ${fmt0(t)} %. Prix TTC ?`, a, u:"€", s:[`TTC = HT × (1 + taux de TVA)`,`= ${fmt(ht)} × ${fmt0(1+t/100)} = ${fmt(a)} €`]}; }},
+ {n:"Prix HT", f(){ const ttc = rnd(6,480); const t = pick([20,20,5.5,10]); const a = r2(ttc/(1+t/100)); return {q:`Un devis s’élève à ${fmt0(ttc)} € TTC. TVA ${fmt0(t)} %. Montant HT ?`, a, u:"€", s:[`HT = TTC ÷ (1 + taux de TVA)`,`= ${fmt0(ttc)} ÷ ${fmt0(1+t/100)} = ${fmt(a)} €`, `Piège : ne pas faire TTC × 0,8 !`]}; }},
+ {n:"Montant de TVA", f(){ const ht = rnd(10,900); const t = pick([20,5.5,10]); const a = r2(ht*t/100); return {q:`Prix HT ${fmt0(ht)} €, TVA ${fmt0(t)} %. Montant de la TVA ?`, a, u:"€", s:[`TVA = HT × taux`,`= ${fmt0(ht)} × ${fmt0(t)} % = ${fmt(a)} €`]}; }},
+ {n:"Prix remisé", f(){ const p = rnd(10,300); const r = pick([5,10,15,20,25,30,40,50]); const a = r2(p*(1-r/100)); return {q:`Un devis de ${fmt0(p)} € bénéficie d’une remise de ${r} %. Nouveau montant ?`, a, u:"€", s:[`Prix remisé = prix × (1 − remise)`,`= ${fmt0(p)} × ${fmt0(1-r/100)} = ${fmt(a)} €`]}; }},
+ {n:"Montant de la remise", f(){ const p = rnd(10,300); const r = pick([5,10,15,20,25,30]); const a = r2(p*r/100); return {q:`Un contrat coûte ${fmt0(p)} € par an, avec une remise de bienvenue de ${r} %. Montant de la remise ?`, a, u:"€", s:[`Remise = prix × taux`,`= ${fmt0(p)} × ${r} % = ${fmt(a)} €`]}; }},
+ {n:"Taux d’évolution", f(){ const v1 = rnd(50,2000); const v2 = Math.round(v1*(1+rnd(-40,80)/100)); const a = r2((v2-v1)/v1*100); return {q:`Le nombre de contrats signés passe de ${fmt0(v1)} à ${fmt0(v2)}. Taux d’évolution ?`, a, u:"%", s:[`(arrivée − départ) ÷ départ × 100`,`= (${fmt0(v2)} − ${fmt0(v1)}) ÷ ${fmt0(v1)} × 100 = ${fmt(a)} %`]}; }},
+ {n:"Marge unitaire", f(){ const pa = r2(rnd(200,5000)/100); const pv = r2(pa*(1+rnd(20,120)/100)); const a = r2(pv-pa); return {q:`Coût d’achat HT ${fmt(pa)} €, prix de vente HT ${fmt(pv)} €. Marge unitaire ?`, a, u:"€", s:[`Marge = PV HT − PA HT`,`= ${fmt(pv)} − ${fmt(pa)} = ${fmt(a)} €`]}; }},
+ {n:"Coefficient", f(){ const pa = rnd(3,80); const k = pick([1.5,1.8,2,2.2,2.5,3]); const a = r2(pa*k); return {q:`Prix d’achat HT ${fmt0(pa)} €, coefficient multiplicateur ${fmt0(k)}. Prix de vente TTC ?`, a, u:"€", s:[`PV TTC = PA HT × coefficient`,`= ${fmt0(pa)} × ${fmt0(k)} = ${fmt(a)} €`]}; }},
+ {n:"Pourcentage d’un total", f(){ const tot = pick([200,250,400,500,800,1200]); const p = rnd(10,tot-10); const a = r2(p/tot*100); return {q:`${p} prospects sur ${tot} ont accepté un rendez-vous. Pourcentage ?`, a, u:"%", s:[`Part = partie ÷ total × 100`,`= ${p} ÷ ${tot} × 100 = ${fmt(a)} %`]}; }},
+ {n:"Coût par contact", f(){ const q = pick([40,50,80,100,120,200,250]); const p = rnd(150,3000); const a = r2(p/q); return {q:`Une opération de phoning a coûté ${fmt0(p)} € pour ${q} contacts obtenus. Coût d’un contact ?`, a, u:"€", s:[`Coût par contact = coût total ÷ nombre de contacts`,`= ${fmt0(p)} ÷ ${q} = ${fmt(a)} €`]}; }},
+ {n:"Commission", f(){ const v = pick([150000,180000,210000,240000,265000,320000]); const t = pick([2,2.5,3,4,5]); const a = r2(v*t/100); return {q:`Une agence immobilière vend un bien ${fmt0(v)} € et touche ${fmt0(t)} % de commission. Montant de la commission ?`, a, u:"€", s:[`Commission = prix de vente × taux`,`= ${fmt0(v)} × ${fmt0(t)} % = ${fmt(a)} €`]}; }},
+ {n:"Taux de prise de RDV", f(){ const v = rnd(40,300); const a0 = rnd(4, Math.round(v*.35)); const a = r2(a0/v*100); return {q:`Sur ${v} appels aboutis, tu obtiens ${a0} rendez-vous. Taux de prise de rendez-vous ?`, a, u:"%", s:[`RDV ÷ appels aboutis × 100`,`= ${a0} ÷ ${v} × 100 = ${fmt(a)} %`]}; }},
+ {n:"Taux de réalisation", f(){ const o = pick([20,30,40,50,60,80]); const r = Math.round(o*rnd(55,140)/100); const a = r2(r/o*100); return {q:`Ton objectif était de ${o} rendez-vous. Tu en as obtenu ${r}. Taux de réalisation de l’objectif ?`, a, u:"%", s:[`Résultat ÷ objectif × 100`,`= ${r} ÷ ${o} × 100 = ${fmt(a)} %`]}; }}
+];
+let SV = null;
+function calcHome(){
+  $("#calc-root").innerHTML = `<div style="display:grid;gap:8px"><p class="eyebrow">Module 4 · Mode survie</p><h1 class="h1">Flash-calcul du commercial</h1>
+   <p class="lede">TVA, remises, marges, évolutions, pourcentages. Tu as <b>3 vies</b> et un chrono qui raccourcit à chaque bonne réponse. À chaque erreur, la série retombe à zéro et la formule s’affiche pas à pas. Arrondis à 2 décimales.</p></div>
+   <div class="panel" style="max-width:640px"><div class="row" style="justify-content:space-between"><span>Record de série : <b class="mono">${S.best.serie || 0}</b> · Meilleur score : <b class="mono">${S.best.survie || 0}</b></span><button class="btn primary" id="sv-go">▶ Lancer la survie</button></div></div>`;
+  $("#sv-go").onclick = startSurvie;
+}
+function startSurvie(){
+  SV = {lives:3, streak:0, bestStreak:0, score:0, T:45, cur:null, timer:null, n:0, zen:S.cfg.zen}; markZen();
+  $("#calc-root").innerHTML = `<div class="panel" style="max-width:680px;width:100%"><div class="survie-hud"><span class="lives" id="sv-l"></span><span>Série <b id="sv-s">0</b></span><span>Score <b id="sv-p">0</b></span><button class="btn ghost sm" id="sv-stop" style="margin-left:auto">Arrêter</button></div>
+   <div class="tbar"><i id="sv-t"></i></div><div class="exo" id="sv-q"></div></div>`;
+  $("#sv-stop").onclick = () => endSurvie(); nextCalc();
+}
+function hudSv(){ $("#sv-l").textContent = "♥".repeat(SV.lives) + "♡".repeat(3 - SV.lives); $("#sv-s").textContent = SV.streak; $("#sv-p").textContent = SV.score; }
+function nextCalc(){
+  hudSv(); const g = pick(CALC); const c = g.f(); SV.cur = {...c, n:g.n}; SV.n++;
+  $("#sv-q").innerHTML = `<p class="ctxline">${esc(g.n)} · question ${SV.n}</p><p class="bigq">${esc(c.q)} ${sayBtn(c.q, true)}</p>
+   <form class="answer-row" id="sv-f"><input id="sv-in" inputmode="decimal" autocomplete="off" placeholder="0,00" aria-label="Ta réponse"><span class="mono">${c.u}</span><button class="btn primary">Valider</button></form><p class="feedback" id="sv-fb"></p><div class="steps" id="sv-steps" hidden></div>`;
+  $("#sv-f").onsubmit = e => { e.preventDefault(); checkCalc(false); }; $("#sv-in").focus({preventScroll:true});
+  clearInterval(SV.timer); const zf = zenFactor(); $(".tbar").hidden = zf === 0; if (zf === 0) return;
+  const T = SV.T * 1000 * zf, t0 = Date.now();
+  SV.timer = setInterval(() => { const left = Math.max(0, T - (Date.now() - t0)); const bar = $("#sv-t"); if (bar) bar.style.width = (left / T * 100) + "%"; if (left <= 0) { clearInterval(SV.timer); checkCalc(true); } }, 100);
+}
+function checkCalc(timeout){
+  const c = SV.cur; const v = parseNum($("#sv-in").value);
+  if (!timeout && isNaN(v)) { $("#sv-fb").textContent = "Entre un nombre."; return; }
+  clearInterval(SV.timer); const ok = !timeout && Math.abs(v - c.a) <= .011;
+  if (ok) { SV.streak++; SV.bestStreak = Math.max(SV.bestStreak, SV.streak); SV.score += 10 * Math.min(5, 1 + Math.floor(SV.streak/5)); SV.T = Math.max(15, SV.T - 2);
+    if (SV.streak === 10) badge("serie10"); if (SV.streak === 25) badge("serie25"); hudSv(); $("#sv-fb").className = "feedback ok"; $("#sv-fb").textContent = "Juste !"; setTimeout(nextCalc, 600); }
+  else { SV.lives--; SV.streak = 0; hudSv(); $("#sv-fb").className = "feedback ko"; $("#sv-fb").textContent = timeout ? "Temps écoulé : la série repart à zéro." : "Faux : la série repart à zéro.";
+    const st = $("#sv-steps"); st.hidden = false; st.innerHTML = c.s.map(x => `<div>${esc(x)}</div>`).join("") + `<div><b>Réponse : ${fmt(c.a)} ${c.u}</b></div>`;
+    const f = $("#sv-f"); f.innerHTML = `<button class="btn primary" type="button" id="sv-next">${SV.lives > 0 ? "J’ai compris, question suivante" : "Voir mon bilan"}</button>`; $("#sv-next").onclick = () => SV.lives > 0 ? nextCalc() : endSurvie(); $("#sv-next").focus(); }
+}
+function endSurvie(){
+  if (!SV) return; clearInterval(SV.timer); const rs = best("serie", SV.bestStreak), rp = best("survie", SV.score); addXp(SV.score);
+  $("#calc-root").innerHTML = `<div class="bilan" style="max-width:640px"><p class="eyebrow">Fin de la survie</p><h2 class="h2">${SV.zen !== "normal" ? `<span class="zen-tag">Mode Zen</span> ` : ""}Score <span class="mono">${SV.score}</span> · meilleure série <span class="mono">${SV.bestStreak}</span>${rs || rp ? ` <span class="hand">record !</span>` : ""}</h2><p class="muted">${SV.n} questions affrontées.</p><div class="row"><button class="btn primary" id="sv-re">Rejouer</button><button class="btn" id="sv-home">Retour</button></div></div>`;
+  $("#sv-re").onclick = startSurvie; $("#sv-home").onclick = calcHome; SV = null;
+}
+
+/* =====================================================================
+   5. SMS & E-MAIL
+   ===================================================================== */
+const SMSLANG = /\b(bjr|slt|stp|svp|pr|ki|koi|tkt|mdr|lol|cc|bcp|jsp|dsl|ptdr|c koi|vs|ds|tt|keske|2m1|bi1|pk|pq)\b/i;
+const MISSIONS = [
+ {id:"estim", type:"sms", titre:"SMS B2C · estimation gratuite d’une agence immobilière", em:"NORD HABITAT", brief:["Émetteur : agence immobilière Nord Habitat, Aulnay-sous-Bois","Cible : propriétaires du secteur ayant accepté d’être contactés par SMS","Offre : estimation gratuite de leur bien sous 48 h, prix du marché en hausse sur Aulnay","Lien : nordhabitat.fr/estimation · désinscription : STOP au 36 180"],
+  model:"NORD HABITAT Aulnay : votre bien vaut peut-être plus que vous ne pensez ! ESTIMATION gratuite sous 48h. RDV : nordhabitat.fr/estimation STOP 36180", key:/nord\s*habitat/i},
+ {id:"relance", type:"sms", titre:"SMS B2B · relance d’une invitation petit-déjeuner", em:"PROXI INTÉRIM", brief:["Émetteur : agence Proxi Intérim de Roissy","Cible : responsables RH des entreprises de la zone aéroportuaire qui n’ont pas répondu à l’invitation","Objet : petit-déjeuner « Recruter pour les pics d’activité », mardi 17 mars à 8 h 30 à l’agence","Lien : proxi-interim.fr/petitdej · désinscription : STOP au 36 180"],
+  model:"PROXI INTÉRIM Roissy : PETIT-DÉJ RH mardi 17/03 à 8h30, recrutez pour vos pics d’activité ! Places limitées : proxi-interim.fr/petitdej STOP 36180", key:/proxi/i},
+ {id:"salon", type:"mail", marketing:true, titre:"E-mailing B2B · invitation sur un salon professionnel", em:"Cabinet Horizon Assurances", brief:["Émetteur : Cabinet Horizon Assurances, service professionnels","Cible : artisans, commerçants et TPE de Seine-Saint-Denis","Objet : stand B12 au Salon des entrepreneurs, Parc des expositions Paris Nord Villepinte, du 14 au 16 avril","Offre : audit gratuit de leurs contrats d’assurance sur le stand · lien d’inscription gratuite","E-mail commercial : mention de désinscription obligatoire"],
+  model:"Objet : Salon des entrepreneurs : votre audit assurance offert\n\nMadame, Monsieur,\n\nVotre entreprise est-elle bien protégée ? Retrouvez le Cabinet Horizon Assurances au Salon des entrepreneurs, du 14 au 16 avril, au Parc des expositions Paris Nord Villepinte, stand B12.\n\nSur le salon, nos conseillers réalisent gratuitement l’audit de vos contrats et vous proposent une solution adaptée à votre activité.\n\nInscrivez-vous gratuitement : horizon-assurances.fr/salon\n\nCordialement,\nYanis Benali\nConseiller professionnels – Cabinet Horizon Assurances\n01 43 00 00 00\n\nPour ne plus recevoir nos e-mails : horizon-assurances.fr/desinscription"},
+ {id:"stage", type:"mail", marketing:false, titre:"E-mail · envoyer sa candidature de stage après un appel", em:"Élève", brief:["Expéditeur : toi, élève de Première Bac Pro MCV option B","Destinataire : M. Lefèvre, agent général du Cabinet Horizon Assurances à Sevran, que tu as eu au téléphone","Contenu : rappeler l’appel, joindre ton CV, confirmer le rendez-vous de jeudi à 15 h","Pas de mention de désinscription : ce n’est pas un e-mail commercial"],
+  model:"Objet : Candidature PFMP du 2 au 27 mars – suite à notre appel\n\nMonsieur Lefèvre,\n\nSuite à notre échange téléphonique de ce jour, je vous adresse ma candidature pour une période de formation en milieu professionnel de 4 semaines, du 2 au 27 mars.\n\nJe souhaite participer à vos actions de prospection : appels pour proposer des bilans d’assurance, prise de rendez-vous et mise à jour du fichier clients.\n\nVous trouverez mon CV en pièce jointe. Comme convenu, je passerai au cabinet jeudi à 15 h pour vous rencontrer et vous remettre la convention de stage.\n\nJe vous remercie pour votre accueil et vous prie d’agréer, Monsieur, mes salutations distinguées.\n\nYanis Benali\nÉlève de Première Bac Pro MCV option B – Lycée de Villepinte\n06 12 34 56 78"}
+];
+function smsChecks(m, t){
+  return [
+   ["160 caractères maximum", t.length > 0 && t.length <= 160],
+   ["Émetteur identifiable dès le début", m.key.test(t.slice(0, 30))],
+   ["Accroche ou offre claire (un « ! », « ? » ou une offre en € / %)", /[!?]|\d\s*(%|€)/.test(t)],
+   ["Un mot-clé en MAJUSCULES pour la lecture rapide", /\b[A-ZÀÂÉÈÊÎÔÛÇ]{4,}\b/.test(t.replace(m.key, ""))],
+   ["Date ou chiffre précis", /\d/.test(t)],
+   ["Un lien", /(https?:\/\/|www\.|[a-z0-9-]+\.(fr|com)\b)/i.test(t)],
+   ["Mention STOP + numéro", /STOP\s*\d/i.test(t)],
+   ["Pas de langage SMS (bjr, stp, pr…)", t.length > 0 && !SMSLANG.test(t)],
+   ["Pas de ponctuation en rafale (!!! ou ???)", t.length > 0 && !/[!?]{2,}/.test(t)]
+  ];
+}
+function mailChecks(m, o, b){
+  const all = o + "\n" + b;
+  const c = [
+   ["Objet présent et court (60 caractères max)", o.trim().length >= 5 && o.length <= 60],
+   ["Objet pas tout en majuscules", o.trim().length > 0 && o !== o.toUpperCase()],
+   ["Formule d’appel (Madame, Monsieur…)", /^(madame|monsieur|bonjour)/im.test(b.trim())],
+   ["Accroche ou rappel du contexte dans les premières lignes", /(suite à|vous |votre |comme convenu|nous avons|j’ai le plaisir|je me permets)/i.test(b.slice(0, 260))],
+   ["Appel à l’action ou engagement clair", /(inscri|cliquez|réserv|rendez-vous|rdv|passerai|confirm|lien|répond|contactez|appelez|ci-joint|pièce jointe)/i.test(b)],
+   ["Formule de politesse", /(cordialement|salutations|bien à vous|sincères|agréer)/i.test(b)],
+   ["Signature avec un numéro de téléphone", /(\d[\s.]?){10}/.test(b.split(/cordialement|salutations|agréer|bien à vous/i).slice(-1)[0] || "")],
+   ["Pas de langage SMS", all.trim().length > 0 && !SMSLANG.test(all)]
+  ];
+  if (m.marketing) c.push(["Lien de désinscription (e-mail commercial)", /(désinscri|desinscri|ne plus recevoir)/i.test(b)]);
+  if (m.id === "stage") c.push(["CV mentionné en pièce jointe", /(cv|curriculum)/i.test(b) && /(pièce jointe|ci-joint|joint)/i.test(b)]);
+  return c;
+}
+let MS = null;
+function smsHome(){
+  $("#sms-root").innerHTML = `<div style="display:grid;gap:8px"><p class="eyebrow">Module 5 · Communication écrite</p><h1 class="h1">Concepteur SMS &amp; e-mail</h1>
+   <p class="lede">Choisis une mission, rédige ton message : l’aperçu se met à jour en direct et chaque critère obligatoire se valide automatiquement.</p></div>
+   <div class="pickers">${MISSIONS.map(m => `<button class="picker" data-m="${m.id}"><p class="eyebrow">${m.type === "sms" ? "SMS" : "E-mail"}</p><h3>${esc(m.titre)}</h3><span class="mod-best">${S.best["msg_"+m.id] ? "Meilleur : " + S.best["msg_"+m.id] + " %" : "Pas encore rédigé"}</span></button>`).join("")}</div>`;
+  $("#sms-root").onclick = e => { const b = e.target.closest("[data-m]"); if (b) openMission(b.dataset.m); };
+}
+function openMission(id){
+  const m = MISSIONS.find(x => x.id === id); MS = m; const sms = m.type === "sms";
+  $("#sms-root").innerHTML = `<div class="row"><button class="btn ghost sm" id="ms-back">← Missions</button></div><h2 class="h2">${esc(m.titre)}</h2>
+   <div class="brief"><b>Ta mission</b><ul style="margin:0;padding-left:1.1em">${m.brief.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>
+   <div class="split"><div class="form-grid" style="min-width:0">
+     ${sms ? `<label for="ms-t">Ton SMS</label><textarea id="ms-t" class="copy" style="min-height:130px" maxlength="320"></textarea><span class="mono" id="ms-count">0 / 160</span>`
+           : `<label for="ms-o">Objet</label><input id="ms-o" maxlength="120" autocomplete="off"><label for="ms-t">Message</label><textarea id="ms-t" class="copy" style="min-height:260px"></textarea>`}
+     <div class="row"><button class="btn primary" id="ms-val">Valider mon message</button><button class="btn" id="ms-model">Voir un modèle</button></div>
+     <ul class="checks" id="ms-checks"></ul><div id="ms-res"></div></div>
+   <div>${sms ? `<div class="sms-phone"><span class="muted" style="font-size:.78rem">${esc(m.em)}</span><div class="bubble" id="ms-prev">…</div></div>` : `<div class="mail"><div class="mh"><span><b>De :</b> ${esc(m.em)}</span><span><b>Objet :</b> <span id="ms-po"></span></span></div><div class="mb" id="ms-prev"></div></div>`}</div></div>`;
+  $("#ms-back").onclick = () => { MS = null; smsHome(); };
+  const upd = () => { const t = $("#ms-t").value, o = sms ? "" : $("#ms-o").value; const ch = sms ? smsChecks(m, t) : mailChecks(m, o, t);
+    if (sms) { $("#ms-count").textContent = `${t.length} / 160`; $("#ms-count").style.color = t.length > 160 ? "var(--red)" : ""; $("#ms-prev").textContent = t || "…"; }
+    else { $("#ms-po").textContent = o; $("#ms-prev").textContent = t; }
+    $("#ms-checks").innerHTML = ch.map(([l,ok]) => `<li class="${ok?"on":""}">${esc(l)}</li>`).join(""); return ch; };
+  $("#sms-root").oninput = upd; upd();
+  $("#ms-val").onclick = () => { const ch = upd(); const n = ch.filter(x => x[1]).length, pc = Math.round(n / ch.length * 100); const rec = best("msg_" + m.id, pc); best("sms", pc); addXp(pc);
+    if (pc === 100) badge("sms");
+    $("#ms-res").innerHTML = `<div class="verdict ${pc===100?"ok":"ko"}"><b>${pc === 100 ? "Message parfait ✓" : `${n} / ${ch.length} critères validés (${pc} %)`}${rec ? " · record !" : ""}</b>${pc < 100 ? `<span>À corriger : ${ch.filter(x => !x[1]).map(x => esc(x[0])).join(" · ")}</span>` : "<span>Il ne te reste qu’à le relire une dernière fois pour l’orthographe.</span>"}</div>`; };
+  $("#ms-model").onclick = () => { if (sms) $("#ms-t").value = m.model; else { const [o, ...rest] = m.model.split("\n"); $("#ms-o").value = o.replace(/^Objet : /, ""); $("#ms-t").value = rest.join("\n").trim(); } upd(); toast("Modèle affiché : compare-le avec ta version"); };
+}
+
+/* =====================================================================
+   6. NOTIONS
+   ===================================================================== */
+const NOTIONS = [
+ ["PFMP","Stage","Période de formation en milieu professionnel : les stages en entreprise du Bac Pro, encadrés par une convention."],
+ ["Convention de stage","Stage","Contrat signé par le lycée, l’entreprise et l’élève, qui fixe les dates, les horaires et les activités de la PFMP."],
+ ["Tuteur","Stage","Salarié de l’entreprise qui accueille, guide et évalue l’élève pendant la PFMP."],
+ ["Méthode CROC","Téléphone","Contact, Raison, Objectif, Conclusion : la trame d’un appel professionnel."],
+ ["Prise de contact téléphonique","Téléphone","Les 4 étapes du programme : l’entame (saluer, se présenter, vérifier l’identité), l’accroche (un bénéfice pour l’interlocuteur), la disponibilité, l’objet de l’appel."],
+ ["Plan d’appel","Téléphone","Trame écrite d’un appel de prospection : phrases préparées pour chaque étape, objections prévues, objectif (souvent un rendez-vous)."],
+ ["Phoning","Prospection","Prospection par téléphone d’un fichier de prospects, souvent pour obtenir des rendez-vous."],
+ ["Porte-à-porte","Prospection","Prospection physique en allant directement chez les prospects (particuliers ou entreprises)."],
+ ["Pige immobilière","Prospection","Repérer les annonces de particuliers qui vendent seuls leur bien, puis les contacter pour leur proposer un mandat."],
+ ["Plan de découverte","Vente","Liste de questions préparées (ouvertes, fermées, alternatives) pour cerner les besoins du prospect."],
+ ["Barrage","Téléphone","Personne qui filtre les appels (standard, vendeur) avant d’atteindre le décideur."],
+ ["Décideur","Téléphone","Personne qui a le pouvoir de dire oui : responsable, gérant, directeur."],
+ ["Reformulation","Téléphone","Répéter avec ses mots ce qui a été convenu pour vérifier que l’on s’est bien compris."],
+ ["Prospection","Prospection","Ensemble des actions pour trouver de nouveaux clients."],
+ ["Prospect","Prospection","Personne ou entreprise qui n’est pas encore cliente mais qui correspond à la cible."],
+ ["Cible","Prospection","Groupe de clients ou de prospects visé par une action commerciale, défini par des critères."],
+ ["Entonnoir de prospection","Prospection","Suspects → prospects → contacts → RDV → clients : à chaque étape, le nombre diminue."],
+ ["Fichier prospects","Prospection","Liste organisée de prospects avec leurs coordonnées et leurs caractéristiques."],
+ ["Qualifier un fichier","Prospection","Vérifier, compléter et mettre à jour les informations des fiches."],
+ ["Méthode OCA","Prospection","Observer, Calculer, Adapter : traiter une information client pour décider."],
+ ["B2B / B2C","Prospection","B2B : vendre à des entreprises. B2C : vendre à des particuliers."],
+ ["RGPD","Données","Règlement européen qui protège les données personnelles : consentement, données utiles uniquement, droit de suppression."],
+ ["Donnée sensible","Données","Santé, religion, opinions politiques, origine, orientation sexuelle… Interdites dans un fichier commercial."],
+ ["Consentement","Données","Accord clair de la personne pour recevoir des messages commerciaux (SMS, e-mails)."],
+ ["SIC","Données","Système d’information commercial : toutes les données utiles à l’action commerciale."],
+ ["SONCASE","Vente","Mobiles d’achat : Sécurité, Orgueil, Nouveauté, Confort, Argent, Sympathie, Environnement."],
+ ["Mobile d’achat","Vente","Raison profonde qui pousse un client à acheter."],
+ ["Frein","Vente","Ce qui retient le client d’acheter (peur, prix, habitude)."],
+ ["Méthode CAP","Vente","Caractéristique → Avantage → Preuve : la structure d’un argument."],
+ ["Objection","Vente","Résistance exprimée par le client, à traiter en reformulant puis en répondant."],
+ ["Découverte des besoins","Vente","Phase où le vendeur questionne le client pour comprendre ce qu’il veut."],
+ ["Questions ouvertes / fermées","Vente","Ouvertes : le client s’exprime librement. Fermées : réponse oui / non ou un choix précis."],
+ ["TVA","Calcul","Taxe sur la valeur ajoutée : HT × (1 + taux) = TTC. Taux de 20 %, 10 % ou 5,5 %."],
+ ["Remise","Calcul","Réduction de prix exprimée en % : prix × (1 − taux)."],
+ ["Marge","Calcul","Prix de vente HT − prix d’achat HT."],
+ ["Taux d’évolution","Calcul","(valeur d’arrivée − valeur de départ) ÷ valeur de départ × 100."],
+ ["Taux de prise de RDV","Calcul","Rendez-vous obtenus ÷ appels aboutis × 100."],
+ ["Commission","Calcul","Rémunération calculée en % d’une vente : prix de vente × taux de commission (agent immobilier, commercial)."],
+ ["SMS marketing","Écrit","Message de 160 caractères maximum, avec émetteur, offre, lien et mention STOP."],
+ ["E-mailing","Écrit","Envoi d’un e-mail commercial à une liste : objet court, accroche, appel à l’action, désinscription."],
+ ["Appel à l’action","Écrit","Phrase ou bouton qui dit au lecteur quoi faire : « Inscrivez-vous », « Réservez »."]
+];
+let FCF = "Toutes";
+function drawCards(){
+  const cats = ["Toutes", ...new Set(NOTIONS.map(n => n[1])), "À revoir"];
+  $("#fc-filter").innerHTML = cats.map(c => `<button class="chip" data-c="${c}" aria-pressed="${c===FCF}">${c}</button>`).join("");
+  const list = NOTIONS.filter(n => FCF==="Toutes" || n[1]===FCF || (FCF==="À revoir" && !S.known[n[0]]));
+  $("#fc-count").textContent = `${Object.values(S.known).filter(Boolean).length} / ${NOTIONS.length} sues`;
+  $("#cards").innerHTML = list.map(n => `<div class="flash" role="button" tabindex="0" aria-label="Carte ${esc(n[0])}"><div class="in">
+    <div class="face"><span class="eyebrow">${esc(n[1])}</span><h3>${esc(n[0])}</h3><span class="${S.known[n[0]]?"known":"muted"}" style="font-size:.78rem">${S.known[n[0]]?"✓ Je sais":"Clique pour retourner"}</span></div>
+    <div class="face back"><p>${esc(n[2])}</p><div class="row"><button class="btn sm" data-k="${esc(n[0])}">${S.known[n[0]]?"Remettre à revoir":"Je sais"}</button></div></div></div></div>`).join("") || `<p class="muted">Tout est su dans cette catégorie.</p>`;
+}
+$("#fc-filter").addEventListener("click", e => { const b = e.target.closest("[data-c]"); if (b) { FCF = b.dataset.c; drawCards(); } });
+$("#cards").addEventListener("click", e => { const k = e.target.closest("[data-k]"); if (k) { e.stopPropagation(); S.known[k.dataset.k] = !S.known[k.dataset.k]; save(); drawCards(); return; } const c = e.target.closest(".flash"); if (c) c.classList.toggle("flip"); });
+$("#cards").addEventListener("keydown", e => { if ((e.key==="Enter"||e.key===" ") && e.target.matches(".flash")) { e.preventDefault(); e.target.classList.toggle("flip"); } });
+
+$("#bilan-btn").addEventListener("click", openBilan);
+applyCfg();
+route();
+
+</script>
+
+</body></html>
